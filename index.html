@@ -6,7 +6,380 @@
     <title>Torovita Testo - Marvit Naturais</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=I<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torovita Testo - Marvit Naturais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #000;
+            color: #E0E0E0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #FF0000, #ff4d4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Estilos do menu móvel */
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(100%);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        /* Torna o cabeçalho fixo no topo */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50; /* Garante que o cabeçalho fique por cima do conteúdo */
+            background-color: #000;
+        }
+        #countdown-timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FF0000;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .timer-flash {
+            animation: flash 1s infinite;
+        }
+        @keyframes flash {
+            0%, 100% { color: #FF0000; }
+            50% { color: #FFFFFF; }
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+
+    <!-- Header - Fixado no topo -->
+    <header class="p-4 md:p-6">
+        <div class="container flex justify-between items-center">
+            <a href="#" class="w-16">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxcReF7SMq6oOmpa_CHXENhO1eQq1i0ElMWQ&s" alt="Logo da Marvit Naturais">
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
+                <a href="#nossa-historia" class="hover:text-red-500 transition-colors">Nossa História</a>
+                <a href="#beneficios" class="hover:text-red-500 transition-colors">Benefícios</a>
+                <a href="#ofertas" class="hover:text-red-500 transition-colors">Ofertas</a>
+                <a href="#duvidas" class="hover:text-red-500 transition-colors">Dúvidas</a>
+            </nav>
+            <!-- Ícone do Menu Hambúrguer -->
+            <button id="hamburger-button" class="md:hidden text-gray-200 focus:outline-none p-2 -mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sobreposição do Menu Móvel -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-950 bg-opacity-95 z-50 mobile-menu hidden">
+        <div class="flex justify-end p-6">
+            <button id="close-menu-button" class="text-gray-200 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase h-full">
+            <a href="#nossa-historia" class="hover:text-red-500 transition-colors mobile-link">Nossa História</a>
+            <a href="#beneficios" class="hover:text-red-500 transition-colors mobile-link">Benefícios</a>
+            <a href="#ofertas" class="hover:text-red-500 transition-colors mobile-link">Ofertas</a>
+            <a href="#duvidas" class="hover:text-red-500 transition-colors mobile-link">Dúvidas</a>
+        </nav>
+    </div>
+
+    <!-- Seção Principal - Adiciona padding para o menu fixo -->
+    <main class="py-16 md:py-32 pt-[100px]">
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Coluna da Esquerda: Conteúdo de Texto -->
+            <div class="space-y-6 text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-lg">
+                    Desbloqueie o Seu Potencial Completo
+                </h1>
+                <p class="text-xl md:text-2xl text-red-600 font-bold uppercase tracking-wide">
+                    MARVIT NATURAIS APRESENTA <span class="text-white">TOROVITA TESTO</span>
+                </p>
+                <a href="#nossa-historia" class="inline-block px-10 py-4 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    Saiba Mais
+                </a>
+            </div>
+            <!-- Coluna da Direita: Imagem do Produto -->
+            <div class="flex justify-center md:justify-end">
+                <div class="relative w-full max-w-lg">
+                    <img src="https://st3.depositphotos.com/12531762/16795/i/450/depositphotos_167956118-stock-photo-strong-man-showing-muscles.jpg" alt="Homem musculoso se exercitando" class="w-full h-auto object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Seção Nossa História -->
+    <section id="nossa-historia" class="bg-gray-950 py-16">
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="flex justify-center md:justify-start">
+                <div class="relative w-full max-w-sm mx-auto">
+                    <img src="https://r.mobirisesite.com/1644447/assets/images/photo-1528753053312-73f5af145-h_md95tgab.jpg" alt="Frasco do produto Torovita Testo" class="w-full h-auto object-cover rounded-lg">
+                </div>
+            </div>
+            <div class="space-y-6 text-center md:text-left">
+                <h2 class="text-4xl font-extrabold text-white uppercase">
+                    <span class="text-gradient">Nossa História</span>
+                </h2>
+                <p class="text-lg text-gray-300">
+                    Criada com o propósito de promover saúde e bem-estar de forma natural e acessível, a Marvit surge como uma marca dedicada à qualidade de vida.
+                </p>
+                <p class="text-lg text-gray-300">
+                    Nosso primeiro lançamento é o Torovita Testo, um potente estimulante masculino 100% natural e de linha premium. Ele ajuda a recuperar a vitalidade e a aumentar a testosterona, proporcionando mais força, energia, potência e libido.
+                </p>
+                <p class="text-lg text-gray-300">
+                    Em breve, teremos outros produtos, como:
+                    <ul class="list-disc list-inside mt-2 space-y-1">
+                        <li>Suplementos femininos emagrecedores.</li>
+                        <li>Ômega 3 de alta pureza e qualidade.</li>
+                        <li>Fortificante feminino para cabelo, pele e unhas.</li>
+                    </ul>
+                </p>
+                <p class="text-lg text-gray-300">E muito mais. Marvit Produtos Naturais.</p>
+                <a href="#beneficios" class="inline-block px-8 py-3 mt-4 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    Saiba Mais
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção de Benefícios -->
+    <section id="beneficios" class="bg-gray-950 py-16">
+        <div class="container text-center md:text-left">
+            <h2 class="text-4xl font-extrabold text-white mb-12 uppercase">
+                <span class="text-gradient">Benefícios</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefício 1 -->
+                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6.75a.75.75 0 1 0 0 1.5h4.25a.75.75 0 0 0 0-1.5h-4.25Zm0 3a.75.75 0 1 0 0 1.5h6.25a.75.75 0 0 0 0-1.5h-6.25Zm-3 3.75a.75.75 0 1 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5Z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-white">Otimização Hormonal</h3>
+                    </div>
+                    <p class="text-gray-400">Ajuda a regular e otimizar a produção de testosterona, o que é fundamental para a saúde masculina e a performance física.</p>
+                </div>
+                <!-- Benefício 2 -->
+                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                            <path d="M11.666 2.544a4.437 4.437 0 0 1 3.52 1.348l1.724 1.725a.75.75 0 0 0 1.06 0L20.5 4.316a.75.75 0 0 1 .53.22L22.75 7.5v-.5a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h.5l-2.071-2.072a.75.75 0 0 0-1.06 0l-1.724 1.725a4.438 4.438 0 0 1-4.041 1.096 6.002 6.002 0 0 1-4.49-1.993v-.585a.75.75 0 0 1 1.5 0v.585c0 1.107.87 2.051 1.992 2.201-.39-.46-.667-1.01-.734-1.602A4.437 4.437 0 0 1 11.666 2.544Z" />
+                            <path d="M12.41 12.067a.75.75 0 0 1 .588 1.06l-.284.568c.52.278.994.615 1.416 1.01l.492-.492a.75.75 0 0 1 1.06 0l2.5 2.5a.75.75 0 0 1 0 1.06l-.492.492a4.438 4.438 0 0 1-1.01 1.416l-.568-.284a.75.75 0 0 1-1.06.588l-2.072.58a.75.75 0 0 1-.956-.356l-1.009-2.018a.75.75 0 0 1 .956-.356l2.072.58a4.438 4.438 0 0 1-1.096 4.041 6.003 6.003 0 0 1-1.993 4.49h.585a.75.75 0 0 1 0 1.5h-2.25a.75.75 0 0 1-.75-.75v-2.25a.75.75 0 0 1 1.5 0v.5l2.072-2.071a.75.75 0 0 1 1.06 0l1.725 1.724a4.437 4.437 0 0 1 1.348-3.52l.568-.284Z" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-white">Energia e Disposição</h3>
+                    </div>
+                    <p class="text-gray-400">Promove um aumento significativo nos seus níveis de energia, permitindo mais intensidade e foco nos treinos e nas atividades do dia a dia.</p>
+                </div>
+                <!-- Benefício 3 -->
+                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                            <path fill-rule="evenodd" d="M3.75 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-white">Ganho de Massa Magra</h3>
+                    </div>
+                    <p class="text-gray-400">Com a combinação de ingredientes naturais, auxilia no desenvolvimento muscular e na recuperação pós-treino, potencializando os seus resultados.</p>
+                </div>
+                <!-- Benefício 4 -->
+                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                            <path d="M12 2.25a.75.75 0 0 1 .75.75v.231l4.703 2.858a.75.75 0 0 1-.703 1.262l-3.38-2.054a.75.75 0 0 0-.91-.13L5.432 6.945a.75.75 0 1 1-.703-1.262l4.703-2.858A.75.75 0 0 1 12 2.25ZM12 4.536l-3.793 2.302L4.5 5.097v3.023l3.793 2.302 3.707-2.25v-3.023Zm0 17.214a.75.75 0 0 1-.75-.75v-.231l-4.703-2.858a.75.75 0 0 1 .703-1.262l3.38 2.054a.75.75 0 0 0 .91.13L18.568 17.055a.75.75 0 1 1 .703 1.262l-4.703 2.858a.75.75 0 0 1-.75-.75ZM12 19.464l3.793-2.302L19.5 18.903v-3.023l-3.793-2.302-3.707 2.25v3.023Z" />
+                            <path d="M11.25 12a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
+                            <path d="M12 14.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008ZM12 9.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
+                            <path d="M12 11.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
+                        </svg>
+                        <h3 class="text-xl font-bold text-white">Foco e Clareza Mental</h3>
+                    </div>
+                    <p class="text-gray-400">Além dos benefícios físicos, melhora a clareza mental e a concentração, ajudando você a se sentir mais alerta e pronto para qualquer desafio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Venda de Produtos -->
+    <section id="ofertas" class="bg-black py-16">
+        <div class="container text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4 uppercase">
+                <span class="text-gradient">OFERTAS ESPECIAIS</span>
+            </h2>
+            <div id="countdown-timer"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- Opção 1 -->
+                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
+                    <img src="https://r.mobirisesite.com/1644447/assets/images/photo-1603220064979-23227740e-h_md95qt5s.jpg" alt="Kit 1 frasco de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-white mt-4">R$ 89,90</h3>
+                    <p class="text-red-600 font-medium mt-2">Experimente</p>
+                    <p class="text-sm text-gray-400 mt-2">Equivale a 30 dias de uso. FRETE GRÁTIS.</p>
+                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                        Comprar
+                    </a>
+                </div>
+                <!-- Opção 2 -->
+                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
+                    <img src="https://r.mobirisesite.com/1644447/assets/images/image10-h_mdk9d989.jpg" alt="Kit 2 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-white mt-4">R$ 169,90</h3>
+                    <p class="text-red-600 font-medium mt-2">Libido Extrema</p>
+                    <p class="text-sm text-gray-400 mt-2">Equivale a 2 meses de uso. FRETE GRÁTIS.</p>
+                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                        Comprar
+                    </a>
+                </div>
+                <!-- Opção 3 -->
+                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
+                    <img src="https://r.mobirisesite.com/1644447/assets/images/image10-h_mdk9e7rq.jpg" alt="Kit 3 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-white mt-4">R$ 239,90</h3>
+                    <p class="text-red-600 font-medium mt-2">Mais força, mais potência, mais libido.</p>
+                    <p class="text-sm text-gray-400 mt-2">Equivale a 3 meses de uso. FRETE GRÁTIS.</p>
+                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                        Comprar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section class="bg-black py-16">
+        <div class="container text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-12 uppercase">
+                <span class="text-gradient">Depoimentos</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-300 italic mb-4">"Desde que comecei a usar, minha energia e disposição no dia a dia mudaram completamente. Recomendo muito!"</p>
+                    <p class="font-bold text-sm text-red-600 uppercase">João S.</p>
+                </div>
+                <!-- Depoimento 2 -->
+                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-300 italic mb-4">"Os resultados são visíveis! Melhora no humor, na libido e na performance na academia. Estou muito satisfeito."</p>
+                    <p class="font-bold text-sm text-red-600 uppercase">Pedro A.</p>
+                </div>
+                <!-- Depoimento 3 -->
+                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-300 italic mb-4">"Um produto natural que realmente funciona. Minha confiança e vitalidade voltaram. Não troco por nada!"</p>
+                    <p class="font-bold text-sm text-red-600 uppercase">Carlos P.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Dúvidas Frequentes -->
+    <section id="duvidas" class="bg-gray-950 py-16">
+        <div class="container text-center">
+            <h2 class="text-4xl font-extrabold text-white uppercase">
+                <span class="text-gradient">Dúvidas Frequentes</span>
+            </h2>
+            <p class="mt-4 text-gray-400">Em breve, esta seção será preenchida com as perguntas e respostas mais comuns sobre nossos produtos.</p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-950 text-center text-gray-400 py-8">
+        <div class="container">
+            <p>&copy; 2025 Marvit Naturais. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script>
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        hamburgerButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('open');
+            }, 10);
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenuOverlay.classList.remove('open');
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('hidden');
+            }, 300);
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('open');
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.add('hidden');
+                }, 300);
+            });
+        });
+
+        // Cronômetro de contagem regressiva
+        const countdownElement = document.getElementById('countdown-timer');
+        let timeLeft = 108000; // 1 dia e 6 horas em segundos
+
+        function formatTime(seconds) {
+            const days = Math.floor(seconds / (3600 * 24));
+            seconds %= (3600 * 24);
+            const hours = Math.floor(seconds / 3600);
+            seconds %= 3600;
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+
+            const daysStr = days > 0 ? `${days}d ` : '';
+            const hoursStr = `${hours.toString().padStart(2, '0')}h`;
+            const minutesStr = `${minutes.toString().padStart(2, '0')}m`;
+            const secondsStr = `${remainingSeconds.toString().padStart(2, '0')}s`;
+
+            return `A oferta termina em: ${daysStr}${hoursStr}:${minutesStr}:${secondsStr}`;
+        }
+
+        function updateCountdown() {
+            if (timeLeft <= 0) {
+                countdownElement.textContent = "Oferta Expirada!";
+                countdownElement.classList.remove('timer-flash');
+                return;
+            }
+
+            countdownElement.textContent = formatTime(timeLeft);
+            timeLeft--;
+
+            if (timeLeft <= 60 && !countdownElement.classList.contains('timer-flash')) {
+                countdownElement.classList.add('timer-flash');
+            }
+        }
+
+        // Atualiza o cronômetro a cada segundo
+        setInterval(updateCountdown, 1000);
+
+        // Inicia o cronômetro
+        updateCountdown();
+    </script>
+</body>
+</html>
+nter:wght@400;500;700;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
