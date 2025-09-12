@@ -348,9 +348,9 @@
 
         function updateCountdown() {
             if (timeLeft <= 0) {
-                countdownElement.textContent = "Oferta Expirada!";
+                // Se o tempo acabar, reinicia a contagem
+                timeLeft = 108000; // Define o tempo de volta para 1 dia e 6 horas
                 countdownElement.classList.remove('timer-flash');
-                return;
             }
 
             countdownElement.textContent = formatTime(timeLeft);
