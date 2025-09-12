@@ -71,6 +71,7 @@
                 <a href="#nossa-historia" class="hover:text-red-500 transition-colors">Nossa História</a>
                 <a href="#beneficios" class="hover:text-red-500 transition-colors">Benefícios</a>
                 <a href="#ofertas" class="hover:text-red-500 transition-colors">Ofertas</a>
+                <a href="#revendedor" class="hover:text-red-500 transition-colors">Seja um Revendedor</a>
                 <a href="#duvidas" class="hover:text-red-500 transition-colors">Dúvidas</a>
             </nav>
             <!-- Ícone do Menu Hambúrguer -->
@@ -95,6 +96,7 @@
             <a href="#nossa-historia" class="hover:text-red-500 transition-colors mobile-link">Nossa História</a>
             <a href="#beneficios" class="hover:text-red-500 transition-colors mobile-link">Benefícios</a>
             <a href="#ofertas" class="hover:text-red-500 transition-colors mobile-link">Ofertas</a>
+            <a href="#revendedor" class="hover:text-red-500 transition-colors mobile-link">Seja um Revendedor</a>
             <a href="#duvidas" class="hover:text-red-500 transition-colors mobile-link">Dúvidas</a>
         </nav>
     </div>
@@ -254,6 +256,39 @@
         </div>
     </section>
 
+    <!-- Seção Revendedor -->
+    <section id="revendedor" class="bg-gray-950 py-16">
+        <div class="container text-center max-w-2xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-white uppercase mb-4">
+                <span class="text-gradient">Seja um Revendedor</span>
+            </h2>
+            <p class="text-lg text-gray-300 mb-8">
+                Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e entraremos em contato.
+            </p>
+            <form id="revendedor-form" class="bg-gray-900 p-8 rounded-lg shadow-xl space-y-6">
+                <div>
+                    <label for="nome" class="block text-left text-sm font-medium text-gray-400">Nome</label>
+                    <input type="text" id="nome" name="nome" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                </div>
+                <div>
+                    <label for="endereco" class="block text-left text-sm font-medium text-gray-400">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                </div>
+                <div>
+                    <label for="empresa" class="block text-left text-sm font-medium text-gray-400">Nome da Empresa</label>
+                    <input type="text" id="empresa" name="empresa" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                </div>
+                <div>
+                    <label for="telefone" class="block text-left text-sm font-medium text-gray-400">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                </div>
+                <button type="submit" class="w-full px-8 py-3 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </section>
+
     <!-- Seção de Depoimentos -->
     <section class="bg-black py-16">
         <div class="container text-center">
@@ -366,6 +401,29 @@
 
         // Inicia o cronômetro
         updateCountdown();
+
+        // Envio do formulário para o WhatsApp
+        const revendedorForm = document.getElementById('revendedor-form');
+        const whatsappNumber = "5582991970892"; // O 55 é o código do Brasil
+
+        revendedorForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const empresa = document.getElementById('empresa').value;
+            const telefone = document.getElementById('telefone').value;
+
+            // Cria a mensagem completa
+            const message = `Como faço para ser revendedor Marvit Produtos Naturais?%0ANome: ${nome}%0AEndereço: ${endereco}%0AEmpresa: ${empresa}%0ATelefone: ${telefone}`;
+
+            // Codifica a mensagem para a URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Constrói a URL do WhatsApp e redireciona
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
     </script>
 </body>
 </html>
