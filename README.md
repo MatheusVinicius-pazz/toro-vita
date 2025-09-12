@@ -1,2 +1,2 @@
 # toro-vita
-[CLIQUE AQUI](teste-toro.netlify.app)
+[CLIQUE AQUI](https://teste-toro.netlify.app/)
