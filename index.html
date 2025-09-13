@@ -404,10 +404,9 @@
             <p class="text-lg text-gray-600 mb-8">
                 Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e suas informações serão enviadas para o nosso e-mail.
             </p>
-            <!-- O action do formulário foi atualizado para usar o Formspree -->
+            <!-- Ação e método do formulário foram atualizados -->
             <form id="revendedor-form" action="https://formspree.io/f/f/YOUR_FORM_ID" method="POST" class="bg-gray-100 p-8 rounded-lg shadow-xl space-y-6">
                 <!-- Por favor, substitua 'YOUR_FORM_ID' acima pelo seu ID do Formspree -->
-                <!-- Nomes dos inputs foram atualizados para serem mais compatíveis com o Formspree -->
                 <div>
                     <label for="name" class="block text-left text-sm font-medium text-gray-600">Nome</label>
                     <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm text-gray-900">
@@ -424,8 +423,6 @@
                     <label for="phone" class="block text-left text-sm font-medium text-gray-600">Telefone</label>
                     <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm text-gray-900">
                 </div>
-                <!-- Este campo 'email' é um campo especial para o Formspree -->
-                <input type="hidden" name="_replyto" value="matheus2014zn@gmail.com">
                 <button type="submit" class="w-full px-8 py-3 text-white font-bold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-700 transition-colors rounded-full shadow-lg shadow-emerald-500/50">
                     Enviar
                 </button>
