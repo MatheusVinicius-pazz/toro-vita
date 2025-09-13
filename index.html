@@ -5,6 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Torovita Testo - Marvit Naturais</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, addDoc, getDocs, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Variáveis globais para Firebase, fornecidas pelo ambiente.
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Adiciona um listener para garantir que o DOM esteja carregado
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Inicializa o Firebase
+            let app, db, auth;
+            try {
+                if (Object.keys(firebaseConfig).length > 0) {
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    setLogLevel('debug');
+                } else {
+                    console.error("Firebase config is missing. Please ensure __firebase_config is available.");
+                }
+            } catch (e) {
+                console.error("Failed to initialize Firebase:", e);
+                return;
+            }
+
+            // Autenticação do usuário
+            let userId = null;
+            if (auth) {
+                await onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        document.getElementById('user-id-display').textContent = `ID do Usuário: ${userId}`;
+                    } else {
+                        try {
+                            if (initialAuthToken) {
+                                await signInWithCustomToken(auth, initialAuthToken);
+                            } else {
+                                await signInAnonymously(auth);
+                            }
+                        } catch (error) {
+                            console.error("Erro na autenticação:", error);
+                        }
+                    }
+                });
+            }
+
+            // Funções de UI
+            const showMessage = (message, isError = false) => {
+                const modal = document.getElementById('message-modal');
+                const messageText = document.getElementById('message-text');
+                const modalHeader = document.getElementById('modal-header');
+
+                messageText.textContent = message;
+                modalHeader.textContent = isError ? 'Erro' : 'Sucesso';
+                modalHeader.className = `text-2xl font-bold ${isError ? 'text-red-500' : 'text-green-500'}`;
+                
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0', 'scale-95');
+                    modal.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            };
+
+            const hideMessage = () => {
+                const modal = document.getElementById('message-modal');
+                modal.classList.add('opacity-0', 'scale-95');
+                modal.classList.remove('opacity-100', 'scale-100');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            };
+
+            // Lógica do menu móvel
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            hamburgerButton.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.add('open');
+                }, 10);
+            });
+
+            closeMenuButton.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('open');
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.add('hidden');
+                }, 300);
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuOverlay.classList.remove('open');
+                    setTimeout(() => {
+                        mobileMenuOverlay.classList.add('hidden');
+                    }, 300);
+                });
+            });
+
+            // Lógica do cronômetro de contagem regressiva
+            const countdownElement = document.getElementById('countdown-timer');
+            let timeLeft = 108000; // 1 dia e 6 horas em segundos
+
+            function formatTime(seconds) {
+                const hours = Math.floor(seconds / 3600);
+                seconds %= 3600;
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+
+                const hoursStr = `${hours.toString().padStart(2, '0')}h`;
+                const minutesStr = `${minutes.toString().padStart(2, '0')}m`;
+                const secondsStr = `${remainingSeconds.toString().padStart(2, '0')}s`;
+
+                return `A oferta termina em: ${hoursStr}:${minutesStr}:${secondsStr}`;
+            }
+
+            function updateCountdown() {
+                if (timeLeft <= 0) {
+                    timeLeft = 108000;
+                    countdownElement.classList.remove('timer-flash');
+                }
+                countdownElement.textContent = formatTime(timeLeft);
+                timeLeft--;
+
+                if (timeLeft <= 60 && !countdownElement.classList.contains('timer-flash')) {
+                    countdownElement.classList.add('timer-flash');
+                }
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // Lógica de envio do formulário para o Firestore
+            const revendedorForm = document.getElementById('revendedor-form');
+            revendedorForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (!db || !userId) {
+                    showMessage('Erro: O banco de dados não está pronto. Tente novamente.', true);
+                    return;
+                }
+
+                const nome = document.getElementById('nome').value;
+                const endereco = document.getElementById('endereco').value;
+                const empresa = document.getElementById('empresa').value;
+                const telefone = document.getElementById('telefone').value;
+
+                try {
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/revendedores`), {
+                        nome,
+                        endereco,
+                        empresa,
+                        telefone,
+                        timestamp: new Date()
+                    });
+                    showMessage('Formulário enviado com sucesso!');
+                    revendedorForm.reset();
+                } catch (e) {
+                    console.error("Erro ao adicionar documento:", e);
+                    showMessage('Ocorreu um erro ao enviar o formulário. Tente novamente.', true);
+                }
+            });
+        });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
         body {
@@ -29,7 +198,6 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Estilos do menu móvel */
         .mobile-menu {
             transition: transform 0.3s ease-in-out;
             transform: translateX(100%);
@@ -37,14 +205,15 @@
         .mobile-menu.open {
             transform: translateX(0);
         }
-        /* Torna o cabeçalho fixo no topo */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 50; /* Garante que o cabeçalho fique por cima do conteúdo */
+            z-index: 50;
             background-color: #F8F8F8;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         #countdown-timer {
             font-size: 1.5rem;
@@ -66,7 +235,7 @@
 
     <!-- Header - Fixado no topo -->
     <header class="p-4 md:p-6 border-b-2 border-green-500">
-        <div class="container flex justify-between items-center">
+        <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="font-extrabold text-xl md:text-2xl text-green-600">MARVIT NATURAIS</a>
             <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
                 <a href="#nossa-historia" class="hover:text-green-500 transition-colors">Nossa História</a>
@@ -102,9 +271,9 @@
         </nav>
     </div>
 
-    <!-- Seção Principal - Adiciona padding para o menu fixo -->
-    <main class="py-16 md:py-32 pt-[100px]">
-        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- Seção Principal -->
+    <main class="py-16 md:py-32 pt-[100px] px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <!-- Coluna da Esquerda: Conteúdo de Texto -->
             <div class="space-y-6 text-center md:text-left">
                 <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight drop-shadow-lg">
@@ -120,18 +289,18 @@
             <!-- Coluna da Direita: Imagem do Produto -->
             <div class="flex justify-center md:justify-end">
                 <div class="relative w-full max-w-lg">
-                    <img src="https://st3.depositphotos.com/12531762/16795/i/450/depositphotos_167956118-stock-photo-strong-man-showing-muscles.jpg" alt="Homem musculoso se exercitando" class="w-full h-auto object-cover rounded-lg">
+                    <img src="https://placehold.co/600x400/10B981/ffffff?text=For%C3%A7a" alt="Homem musculoso se exercitando" class="w-full h-auto object-cover rounded-lg">
                 </div>
             </div>
         </div>
     </main>
 
     <!-- Seção Nossa História -->
-    <section id="nossa-historia" class="bg-gray-100 py-16">
-        <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="nossa-historia" class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center md:justify-start">
                 <div class="relative w-full max-w-sm mx-auto">
-                    <img src="https://r.mobirisesite.com/1644447/assets/images/photo-1528753053312-73f5af145-h_md95tgab.jpg" alt="Frasco do produto Torovita Testo" class="w-full h-auto object-cover rounded-lg">
+                    <img src="https://placehold.co/400x500/10B981/ffffff?text=Torovita+Testo" alt="Frasco do produto Torovita Testo" class="w-full h-auto object-cover rounded-lg">
                 </div>
             </div>
             <div class="space-y-6 text-center md:text-left">
@@ -161,14 +330,14 @@
     </section>
     
     <!-- Seção de Benefícios -->
-    <section id="beneficios" class="bg-gray-100 py-16">
-        <div class="container text-center md:text-left">
+    <section id="beneficios" class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center md:text-left">
             <h2 class="text-4xl font-extrabold text-gray-900 mb-12 uppercase">
                 <span class="text-green-gradient">Benefícios</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Benefício 1 -->
-                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
+                <div class="p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6.75a.75.75 0 1 0 0 1.5h4.25a.75.75 0 0 0 0-1.5h-4.25Zm0 3a.75.75 0 1 0 0 1.5h6.25a.75.75 0 0 0 0-1.5h-6.25Zm-3 3.75a.75.75 0 1 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5Z" clip-rule="evenodd" />
@@ -178,7 +347,7 @@
                     <p class="text-gray-600">Ajuda a regular e otimizar a produção de testosterona, o que é fundamental para a saúde masculina e a performance física.</p>
                 </div>
                 <!-- Benefício 2 -->
-                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
+                <div class="p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path d="M11.666 2.544a4.437 4.437 0 0 1 3.52 1.348l1.724 1.725a.75.75 0 0 0 1.06 0L20.5 4.316a.75.75 0 0 1 .53.22L22.75 7.5v-.5a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h.5l-2.071-2.072a.75.75 0 0 0-1.06 0l-1.724 1.725a4.438 4.438 0 0 1-4.041 1.096 6.002 6.002 0 0 1-4.49-1.993v-.585a.75.75 0 0 1 1.5 0v.585c0 1.107.87 2.051 1.992 2.201-.39-.46-.667-1.01-.734-1.602A4.437 4.437 0 0 1 11.666 2.544Z" />
@@ -189,7 +358,7 @@
                     <p class="text-gray-600">Promove um aumento significativo nos seus níveis de energia, permitindo mais intensidade e foco nos treinos e nas atividades do dia a dia.</p>
                 </div>
                 <!-- Benefício 3 -->
-                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
+                <div class="p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path fill-rule="evenodd" d="M3.75 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
@@ -199,7 +368,7 @@
                     <p class="text-gray-600">Com a combinação de ingredientes naturais, auxilia no desenvolvimento muscular e na recuperação pós-treino, potencializando os seus resultados.</p>
                 </div>
                 <!-- Benefício 4 -->
-                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
+                <div class="p-6 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow">
                     <div class="flex items-center space-x-4 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path d="M12 2.25a.75.75 0 0 1 .75.75v.231l4.703 2.858a.75.75 0 0 1-.703 1.262l-3.38-2.054a.75.75 0 0 0-.91-.13L5.432 6.945a.75.75 0 1 1-.703-1.262l4.703-2.858A.75.75 0 0 1 12 2.25ZM12 4.536l-3.793 2.302L4.5 5.097v3.023l3.793 2.302 3.707-2.25v-3.023Zm0 17.214a.75.75 0 0 1-.75-.75v-.231l-4.703-2.858a.75.75 0 0 1 .703-1.262l3.38 2.054a.75.75 0 0 0 .91.13L18.568 17.055a.75.75 0 1 1 .703 1.262l-4.703 2.858a.75.75 0 0 1-.75-.75ZM12 19.464l3.793-2.302L19.5 18.903v-3.023l-3.793-2.302-3.707 2.25v3.023Z" />
@@ -216,8 +385,8 @@
     </section>
 
     <!-- Seção de Venda de Produtos -->
-    <section id="ofertas" class="bg-black py-16">
-        <div class="container text-center">
+    <section id="ofertas" class="bg-black py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center">
             <h2 class="text-4xl font-extrabold text-white mb-4 uppercase">
                 <span class="text-red-gradient">OFERTAS ESPECIAIS</span>
             </h2>
@@ -225,7 +394,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
                 <!-- Opção 1 -->
                 <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://r.mobirisesite.com/1644447/assets/images/photo-1603220064979-23227740e-h_md95qt5s.jpg" alt="Kit 1 frasco de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=1+Frasco" alt="Kit 1 frasco de Torovita Testo" class="w-48 h-48 object-contain mb-4">
                     <h3 class="text-2xl font-bold text-white mt-4">R$ 89,90</h3>
                     <p class="text-red-600 font-medium mt-2">Experimente</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 30 dias de uso. FRETE GRÁTIS.</p>
@@ -235,7 +404,7 @@
                 </div>
                 <!-- Opção 2 -->
                 <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://r.mobirisesite.com/1644447/assets/images/image10-h_mdk9d989.jpg" alt="Kit 2 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=2+Frascos" alt="Kit 2 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
                     <h3 class="text-2xl font-bold text-white mt-4">R$ 169,90</h3>
                     <p class="text-red-600 font-medium mt-2">Libido Extrema</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 2 meses de uso. FRETE GRÁTIS.</p>
@@ -245,7 +414,7 @@
                 </div>
                 <!-- Opção 3 -->
                 <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://r.mobirisesite.com/1644447/assets/images/image10-h_mdk9e7rq.jpg" alt="Kit 3 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=3+Frascos" alt="Kit 3 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
                     <h3 class="text-2xl font-bold text-white mt-4">R$ 239,90</h3>
                     <p class="text-red-600 font-medium mt-2">Mais força, mais potência, mais libido.</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 3 meses de uso. FRETE GRÁTIS.</p>
@@ -258,13 +427,13 @@
     </section>
 
     <!-- Seção Revendedor -->
-    <section id="revendedor" class="bg-gray-100 py-16">
-        <div class="container text-center max-w-2xl mx-auto">
+    <section id="revendedor" class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center max-w-2xl">
             <h2 class="text-4xl font-extrabold text-gray-900 uppercase mb-4">
                 <span class="text-green-gradient">Seja um Revendedor</span>
             </h2>
             <p class="text-lg text-gray-600 mb-8">
-                Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e entraremos em contato.
+                Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e salvaremos seus dados para contato.
             </p>
             <form id="revendedor-form" class="bg-gray-100 p-8 rounded-lg shadow-xl space-y-6">
                 <div>
@@ -291,24 +460,24 @@
     </section>
 
     <!-- Seção de Depoimentos -->
-    <section class="bg-white py-16">
-        <div class="container text-center">
+    <section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center">
             <h2 class="text-4xl font-extrabold text-gray-900 mb-12 uppercase">
                 <span class="text-green-gradient">Depoimentos</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Depoimento 1 -->
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
                     <p class="text-gray-600 italic mb-4">"Desde que comecei a usar, minha energia e disposição no dia a dia mudaram completamente. Recomendo muito!"</p>
                     <p class="font-bold text-sm text-green-600 uppercase">João S.</p>
                 </div>
                 <!-- Depoimento 2 -->
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
                     <p class="text-gray-600 italic mb-4">"Os resultados são visíveis! Melhora no humor, na libido e na performance na academia. Estou muito satisfeito."</p>
                     <p class="font-bold text-sm text-green-600 uppercase">Pedro A.</p>
                 </div>
                 <!-- Depoimento 3 -->
-                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
                     <p class="text-gray-600 italic mb-4">"Um produto natural que realmente funciona. Minha confiança e vitalidade voltaram. Não troco por nada!"</p>
                     <p class="font-bold text-sm text-green-600 uppercase">Carlos P.</p>
                 </div>
@@ -317,8 +486,8 @@
     </section>
 
     <!-- Seção de Dúvidas Frequentes -->
-    <section id="duvidas" class="bg-gray-100 py-16">
-        <div class="container text-center">
+    <section id="duvidas" class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto text-center">
             <h2 class="text-4xl font-extrabold text-gray-900 uppercase">
                 <span class="text-green-gradient">Dúvidas Frequentes</span>
             </h2>
@@ -327,104 +496,23 @@
     </section>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-100 text-center text-gray-700 py-8">
-        <div class="container">
+    <footer class="bg-gray-100 text-center text-gray-700 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <p>&copy; 2025 Marvit Naturais. Todos os direitos reservados.</p>
+            <p id="user-id-display" class="mt-2 md:mt-0 text-sm"></p>
         </div>
     </footer>
+
+    <!-- Modal de Mensagem -->
+    <div id="message-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900 bg-opacity-50 backdrop-blur-sm hidden transition-all duration-300 ease-in-out opacity-0 scale-95">
+        <div class="bg-white p-6 rounded-lg shadow-2xl max-w-md w-full text-center">
+            <h2 id="modal-header" class="text-2xl font-bold mb-4"></h2>
+            <p id="message-text" class="text-gray-700 mb-6"></p>
+            <button onclick="hideMessage()" class="px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">
+                OK
+            </button>
+        </div>
+    </div>
     
-    <script>
-        const hamburgerButton = document.getElementById('hamburger-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        hamburgerButton.addEventListener('click', () => {
-            mobileMenuOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                mobileMenuOverlay.classList.add('open');
-            }, 10);
-        });
-
-        closeMenuButton.addEventListener('click', () => {
-            mobileMenuOverlay.classList.remove('open');
-            setTimeout(() => {
-                mobileMenuOverlay.classList.add('hidden');
-            }, 300);
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuOverlay.classList.remove('open');
-                setTimeout(() => {
-                    mobileMenuOverlay.classList.add('hidden');
-                }, 300);
-            });
-        });
-
-        // Cronômetro de contagem regressiva
-        const countdownElement = document.getElementById('countdown-timer');
-        let timeLeft = 108000; // 1 dia e 6 horas em segundos
-
-        function formatTime(seconds) {
-            const days = Math.floor(seconds / (3600 * 24));
-            seconds %= (3600 * 24);
-            const hours = Math.floor(seconds / 3600);
-            seconds %= 3600;
-            const minutes = Math.floor(seconds / 60);
-            const remainingSeconds = seconds % 60;
-
-            const daysStr = days > 0 ? `${days}d ` : '';
-            const hoursStr = `${hours.toString().padStart(2, '0')}h`;
-            const minutesStr = `${minutes.toString().padStart(2, '0')}m`;
-            const secondsStr = `${remainingSeconds.toString().padStart(2, '0')}s`;
-
-            return `A oferta termina em: ${daysStr}${hoursStr}:${minutesStr}:${secondsStr}`;
-        }
-
-        function updateCountdown() {
-            if (timeLeft <= 0) {
-                // Se o tempo acabar, reinicia a contagem
-                timeLeft = 108000; // Define o tempo de volta para 1 dia e 6 horas
-                countdownElement.classList.remove('timer-flash');
-            }
-
-            countdownElement.textContent = formatTime(timeLeft);
-            timeLeft--;
-
-            if (timeLeft <= 60 && !countdownElement.classList.contains('timer-flash')) {
-                countdownElement.classList.add('timer-flash');
-            }
-        }
-
-        // Atualiza o cronômetro a cada segundo
-        setInterval(updateCountdown, 1000);
-
-        // Inicia o cronômetro
-        updateCountdown();
-
-        // Envio do formulário para o WhatsApp
-        const revendedorForm = document.getElementById('revendedor-form');
-        const whatsappNumber = "5582991970892"; // O 55 é o código do Brasil
-
-        revendedorForm.addEventListener('submit', (event) => {
-            event.preventDefault(); // Impede o envio padrão do formulário
-
-            const nome = document.getElementById('nome').value;
-            const endereco = document.getElementById('endereco').value;
-            const empresa = document.getElementById('empresa').value;
-            const telefone = document.getElementById('telefone').value;
-
-            // Cria a mensagem completa
-            const message = `Como faço para ser revendedor Marvit Produtos Naturais?%0A%0ANome: ${nome}%0AEndereço: ${endereco}%0AEmpresa: ${empresa}%0ATelefone: ${telefone}`;
-
-            // Codifica a mensagem para a URL
-            const encodedMessage = encodeURIComponent(message);
-
-            // Constrói a URL do WhatsApp e redireciona
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            window.open(whatsappUrl, '_blank');
-        });
-    </script>
 </body>
 </html>
