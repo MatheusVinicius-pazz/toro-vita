@@ -184,13 +184,13 @@
             color: #333333;
         }
         .text-green-gradient {
-            background-image: linear-gradient(to right, #10B981, #34D399);
+            background-image: linear-gradient(to right, #22C55E, #4ADE80);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        .text-red-gradient {
-            background-image: linear-gradient(to right, #FF0000, #ff4d4d);
+        .text-offer-gradient {
+            background-image: linear-gradient(to right, #00C0FF, #33A1FF);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -218,7 +218,7 @@
         #countdown-timer {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #FF0000;
+            color: #00C0FF;
             text-align: center;
             margin-top: 20px;
         }
@@ -226,7 +226,7 @@
             animation: flash 1s infinite;
         }
         @keyframes flash {
-            0%, 100% { color: #FF0000; }
+            0%, 100% { color: #00C0FF; }
             50% { color: #FFFFFF; }
         }
     </style>
@@ -289,7 +289,7 @@
             <!-- Coluna da Direita: Imagem do Produto -->
             <div class="flex justify-center md:justify-end">
                 <div class="relative w-full max-w-lg">
-                    <img src="https://placehold.co/600x400/10B981/ffffff?text=For%C3%A7a" alt="Homem musculoso se exercitando" class="w-full h-auto object-cover rounded-lg">
+                    <img src="https://placehold.co/600x400/22C55E/ffffff?text=For%C3%A7a" alt="Homem musculoso se exercitando" class="w-full h-auto object-cover rounded-lg">
                 </div>
             </div>
         </div>
@@ -300,7 +300,7 @@
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center md:justify-start">
                 <div class="relative w-full max-w-sm mx-auto">
-                    <img src="https://placehold.co/400x500/10B981/ffffff?text=Torovita+Testo" alt="Frasco do produto Torovita Testo" class="w-full h-auto object-cover rounded-lg">
+                    <img src="https://placehold.co/400x500/22C55E/ffffff?text=Torovita+Testo" alt="Frasco do produto Torovita Testo" class="w-full h-auto object-cover rounded-lg">
                 </div>
             </div>
             <div class="space-y-6 text-center md:text-left">
@@ -385,40 +385,40 @@
     </section>
 
     <!-- Seção de Venda de Produtos -->
-    <section id="ofertas" class="bg-black py-16 px-4 sm:px-6 lg:px-8">
+    <section id="ofertas" class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-4 uppercase">
-                <span class="text-red-gradient">OFERTAS ESPECIAIS</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-4 uppercase">
+                <span class="text-offer-gradient">OFERTAS ESPECIAIS</span>
             </h2>
             <div id="countdown-timer"></div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
                 <!-- Opção 1 -->
-                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=1+Frasco" alt="Kit 1 frasco de Torovita Testo" class="w-48 h-48 object-contain mb-4">
-                    <h3 class="text-2xl font-bold text-white mt-4">R$ 89,90</h3>
-                    <p class="text-red-600 font-medium mt-2">Experimente</p>
+                <div class="p-8 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow flex flex-col items-center">
+                    <img src="https://placehold.co/200x200/00C0FF/ffffff?text=1+Frasco" alt="Kit 1 frasco de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4">R$ 89,90</h3>
+                    <p class="text-gray-600 font-medium mt-2">Experimente</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 30 dias de uso. FRETE GRÁTIS.</p>
-                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-sky-500 hover:bg-sky-600 transition-colors rounded-full shadow-lg shadow-sky-500/50">
                         Comprar
                     </a>
                 </div>
                 <!-- Opção 2 -->
-                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=2+Frascos" alt="Kit 2 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
-                    <h3 class="text-2xl font-bold text-white mt-4">R$ 169,90</h3>
-                    <p class="text-red-600 font-medium mt-2">Libido Extrema</p>
+                <div class="p-8 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow flex flex-col items-center">
+                    <img src="https://placehold.co/200x200/00C0FF/ffffff?text=2+Frascos" alt="Kit 2 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4">R$ 169,90</h3>
+                    <p class="text-gray-600 font-medium mt-2">Libido Extrema</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 2 meses de uso. FRETE GRÁTIS.</p>
-                    <a href="https://pay.cakto.com.br/97ojrwj" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    <a href="https://pay.cakto.com.br/97ojrwj" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-sky-500 hover:bg-sky-600 transition-colors rounded-full shadow-lg shadow-sky-500/50">
                         Comprar
                     </a>
                 </div>
                 <!-- Opção 3 -->
-                <div class="p-8 bg-gray-950 rounded-lg shadow-2xl flex flex-col items-center">
-                    <img src="https://placehold.co/200x200/FF0000/ffffff?text=3+Frascos" alt="Kit 3 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
-                    <h3 class="text-2xl font-bold text-white mt-4">R$ 239,90</h3>
-                    <p class="text-red-600 font-medium mt-2">Mais força, mais potência, mais libido.</p>
+                <div class="p-8 bg-white rounded-lg shadow-xl hover:shadow-2xl transition-shadow flex flex-col items-center">
+                    <img src="https://placehold.co/200x200/00C0FF/ffffff?text=3+Frascos" alt="Kit 3 frascos de Torovita Testo" class="w-48 h-48 object-contain mb-4">
+                    <h3 class="text-2xl font-bold text-gray-900 mt-4">R$ 239,90</h3>
+                    <p class="text-gray-600 font-medium mt-2">Mais força, mais potência, mais libido.</p>
                     <p class="text-sm text-gray-400 mt-2">Equivale a 3 meses de uso. FRETE GRÁTIS.</p>
-                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                    <a href="https://pay.cakto.com.br/3chkfqo_489443" class="inline-block px-8 py-3 mt-8 text-white font-bold uppercase tracking-wider bg-sky-500 hover:bg-sky-600 transition-colors rounded-full shadow-lg shadow-sky-500/50">
                         Comprar
                     </a>
                 </div>
