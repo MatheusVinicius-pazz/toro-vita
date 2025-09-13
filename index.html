@@ -126,6 +126,9 @@
                 return `A oferta termina em: ${hoursStr}:${minutesStr}:${secondsStr}`;
             }
 
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+
             function updateCountdown() {
                 if (timeLeft <= 0) {
                     timeLeft = 108000;
@@ -138,9 +141,6 @@
                     countdownElement.classList.add('timer-flash');
                 }
             }
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
         });
     </script>
     <style>
@@ -342,7 +342,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-emerald-600">
                             <path d="M12 2.25a.75.75 0 0 1 .75.75v.231l4.703 2.858a.75.75 0 0 1-.703 1.262l-3.38-2.054a.75.75 0 0 0-.91-.13L5.432 6.945a.75.75 0 1 1-.703-1.262l4.703-2.858A.75.75 0 0 1 12 2.25ZM12 4.536l-3.793 2.302L4.5 5.097v3.023l3.793 2.302 3.707-2.25v-3.023Zm0 17.214a.75.75 0 0 1-.75-.75v-.231l-4.703-2.858a.75.75 0 0 1 .703-1.262l3.38 2.054a.75.75 0 0 0 .91.13L18.568 17.055a.75.75 0 1 1 .703 1.262l-4.703 2.858a.75.75 0 0 1-.75-.75ZM12 19.464l3.793-2.302L19.5 18.903v-3.023l-3.793-2.302-3.707 2.25v3.023Z" />
                             <path d="M11.25 12a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
-                            <path d="M12 14.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008ZM12 9.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
+                            <path d="M12 14.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
+                            <path d="M12 9.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
                             <path d="M12 11.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
                         </svg>
                         <h3 class="text-xl font-bold text-gray-900">Foco e Clareza Mental</h3>
@@ -405,8 +406,8 @@
                 Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e suas informações serão enviadas para o nosso e-mail.
             </p>
             <!-- Ação e método do formulário foram atualizados -->
-            <form id="revendedor-form" action="https://formspree.io/f/f/YOUR_FORM_ID" method="POST" class="bg-gray-100 p-8 rounded-lg shadow-xl space-y-6">
-                <!-- Por favor, substitua 'YOUR_FORM_ID' acima pelo seu ID do Formspree -->
+            <form id="revendedor-form" action="https://formspree.io/f/YOUR_FORM_ID_AQUI" method="POST" class="bg-gray-100 p-8 rounded-lg shadow-xl space-y-6">
+                <!-- SUBSTITUA 'YOUR_FORM_ID_AQUI' ACIMA PELO SEU ID REAL DO FORMSPREE -->
                 <div>
                     <label for="name" class="block text-left text-sm font-medium text-gray-600">Nome</label>
                     <input type="text" id="name" name="name" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm text-gray-900">
