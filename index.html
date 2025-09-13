@@ -11,15 +11,16 @@
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            background-color: #000;
-            color: #E0E0E0;
+            background-color: #F8F8F8;
+            color: #333333;
         }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+        .text-green-gradient {
+            background-image: linear-gradient(to right, #10B981, #34D399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .text-gradient {
+        .text-red-gradient {
             background-image: linear-gradient(to right, #FF0000, #ff4d4d);
             -webkit-background-clip: text;
             background-clip: text;
@@ -43,7 +44,7 @@
             left: 0;
             right: 0;
             z-index: 50; /* Garante que o cabeçalho fique por cima do conteúdo */
-            background-color: #000;
+            background-color: #F8F8F8;
         }
         #countdown-timer {
             font-size: 1.5rem;
@@ -61,21 +62,21 @@
         }
     </style>
 </head>
-<body class="bg-black text-gray-200">
+<body class="bg-white text-gray-900">
 
     <!-- Header - Fixado no topo -->
-    <header class="p-4 md:p-6">
+    <header class="p-4 md:p-6 border-b-2 border-green-500">
         <div class="container flex justify-between items-center">
-            <a href="#" class="font-extrabold text-xl md:text-2xl text-red-600">MARVIT NATURAIS</a>
+            <a href="#" class="font-extrabold text-xl md:text-2xl text-green-600">MARVIT NATURAIS</a>
             <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase">
-                <a href="#nossa-historia" class="hover:text-red-500 transition-colors">Nossa História</a>
-                <a href="#beneficios" class="hover:text-red-500 transition-colors">Benefícios</a>
-                <a href="#ofertas" class="hover:text-red-500 transition-colors">Ofertas</a>
-                <a href="#revendedor" class="hover:text-red-500 transition-colors">Seja um Revendedor</a>
-                <a href="#duvidas" class="hover:text-red-500 transition-colors">Dúvidas</a>
+                <a href="#nossa-historia" class="hover:text-green-500 transition-colors">Nossa História</a>
+                <a href="#beneficios" class="hover:text-green-500 transition-colors">Benefícios</a>
+                <a href="#ofertas" class="hover:text-green-500 transition-colors">Ofertas</a>
+                <a href="#revendedor" class="hover:text-green-500 transition-colors">Seja um Revendedor</a>
+                <a href="#duvidas" class="hover:text-green-500 transition-colors">Dúvidas</a>
             </nav>
             <!-- Ícone do Menu Hambúrguer -->
-            <button id="hamburger-button" class="md:hidden text-gray-200 focus:outline-none p-2 -mr-2">
+            <button id="hamburger-button" class="md:hidden text-gray-900 focus:outline-none p-2 -mr-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
@@ -84,20 +85,20 @@
     </header>
 
     <!-- Sobreposição do Menu Móvel -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-950 bg-opacity-95 z-50 mobile-menu hidden">
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-white bg-opacity-95 z-50 mobile-menu hidden">
         <div class="flex justify-end p-6">
-            <button id="close-menu-button" class="text-gray-200 focus:outline-none">
+            <button id="close-menu-button" class="text-gray-900 focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
         <nav class="flex flex-col items-center justify-center space-y-8 text-2xl font-bold uppercase h-full">
-            <a href="#nossa-historia" class="hover:text-red-500 transition-colors mobile-link">Nossa História</a>
-            <a href="#beneficios" class="hover:text-red-500 transition-colors mobile-link">Benefícios</a>
-            <a href="#ofertas" class="hover:text-red-500 transition-colors mobile-link">Ofertas</a>
-            <a href="#revendedor" class="hover:text-red-500 transition-colors mobile-link">Seja um Revendedor</a>
-            <a href="#duvidas" class="hover:text-red-500 transition-colors mobile-link">Dúvidas</a>
+            <a href="#nossa-historia" class="hover:text-green-500 transition-colors mobile-link">Nossa História</a>
+            <a href="#beneficios" class="hover:text-green-500 transition-colors mobile-link">Benefícios</a>
+            <a href="#ofertas" class="hover:text-green-500 transition-colors mobile-link">Ofertas</a>
+            <a href="#revendedor" class="hover:text-green-500 transition-colors mobile-link">Seja um Revendedor</a>
+            <a href="#duvidas" class="hover:text-green-500 transition-colors mobile-link">Dúvidas</a>
         </nav>
     </div>
 
@@ -106,13 +107,13 @@
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <!-- Coluna da Esquerda: Conteúdo de Texto -->
             <div class="space-y-6 text-center md:text-left">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-lg">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight drop-shadow-lg">
                     Desbloqueie o Seu Potencial Completo
                 </h1>
-                <p class="text-xl md:text-2xl text-red-600 font-bold uppercase tracking-wide">
-                    MARVIT NATURAIS APRESENTA <span class="text-white">TOROVITA TESTO</span>
+                <p class="text-xl md:text-2xl text-green-600 font-bold uppercase tracking-wide">
+                    MARVIT NATURAIS APRESENTA <span class="text-gray-900">TOROVITA TESTO</span>
                 </p>
-                <a href="#nossa-historia" class="inline-block px-10 py-4 mt-8 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                <a href="#nossa-historia" class="inline-block px-10 py-4 mt-8 text-white font-bold uppercase tracking-wider bg-green-600 hover:bg-green-700 transition-colors rounded-full shadow-lg shadow-green-500/50">
                     Saiba Mais
                 </a>
             </div>
@@ -126,7 +127,7 @@
     </main>
 
     <!-- Seção Nossa História -->
-    <section id="nossa-historia" class="bg-gray-950 py-16">
+    <section id="nossa-historia" class="bg-gray-100 py-16">
         <div class="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="flex justify-center md:justify-start">
                 <div class="relative w-full max-w-sm mx-auto">
@@ -134,16 +135,16 @@
                 </div>
             </div>
             <div class="space-y-6 text-center md:text-left">
-                <h2 class="text-4xl font-extrabold text-white uppercase">
-                    <span class="text-gradient">Nossa História</span>
+                <h2 class="text-4xl font-extrabold text-gray-900 uppercase">
+                    <span class="text-green-gradient">Nossa História</span>
                 </h2>
-                <p class="text-lg text-gray-300">
+                <p class="text-lg text-gray-600">
                     Criada com o propósito de promover saúde e bem-estar de forma natural e acessível, a Marvit surge como uma marca dedicada à qualidade de vida.
                 </p>
-                <p class="text-lg text-gray-300">
+                <p class="text-lg text-gray-600">
                     Nosso primeiro lançamento é o Torovita Testo, um potente estimulante masculino 100% natural e de linha premium. Ele ajuda a recuperar a vitalidade e a aumentar a testosterona, proporcionando mais força, energia, potência e libido.
                 </p>
-                <p class="text-lg text-gray-300">
+                <p class="text-lg text-gray-600">
                     Em breve, teremos outros produtos, como:
                     <ul class="list-disc list-inside mt-2 space-y-1">
                         <li>Suplementos femininos emagrecedores.</li>
@@ -151,8 +152,8 @@
                         <li>Fortificante feminino para cabelo, pele e unhas.</li>
                     </ul>
                 </p>
-                <p class="text-lg text-gray-300">E muito mais. Marvit Produtos Naturais.</p>
-                <a href="#beneficios" class="inline-block px-8 py-3 mt-4 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                <p class="text-lg text-gray-600">E muito mais. Marvit Produtos Naturais.</p>
+                <a href="#beneficios" class="inline-block px-8 py-3 mt-4 text-white font-bold uppercase tracking-wider bg-green-600 hover:bg-green-700 transition-colors rounded-full shadow-lg shadow-green-500/50">
                     Saiba Mais
                 </a>
             </div>
@@ -160,55 +161,55 @@
     </section>
     
     <!-- Seção de Benefícios -->
-    <section id="beneficios" class="bg-gray-950 py-16">
+    <section id="beneficios" class="bg-gray-100 py-16">
         <div class="container text-center md:text-left">
-            <h2 class="text-4xl font-extrabold text-white mb-12 uppercase">
-                <span class="text-gradient">Benefícios</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-12 uppercase">
+                <span class="text-green-gradient">Benefícios</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Benefício 1 -->
-                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
                     <div class="flex items-center space-x-4 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6.75a.75.75 0 1 0 0 1.5h4.25a.75.75 0 0 0 0-1.5h-4.25Zm0 3a.75.75 0 1 0 0 1.5h6.25a.75.75 0 0 0 0-1.5h-6.25Zm-3 3.75a.75.75 0 1 0 0 1.5h9.5a.75.75 0 0 0 0-1.5h-9.5Z" clip-rule="evenodd" />
                         </svg>
-                        <h3 class="text-xl font-bold text-white">Otimização Hormonal</h3>
+                        <h3 class="text-xl font-bold text-gray-900">Otimização Hormonal</h3>
                     </div>
-                    <p class="text-gray-400">Ajuda a regular e otimizar a produção de testosterona, o que é fundamental para a saúde masculina e a performance física.</p>
+                    <p class="text-gray-600">Ajuda a regular e otimizar a produção de testosterona, o que é fundamental para a saúde masculina e a performance física.</p>
                 </div>
                 <!-- Benefício 2 -->
-                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
                     <div class="flex items-center space-x-4 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path d="M11.666 2.544a4.437 4.437 0 0 1 3.52 1.348l1.724 1.725a.75.75 0 0 0 1.06 0L20.5 4.316a.75.75 0 0 1 .53.22L22.75 7.5v-.5a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5h.5l-2.071-2.072a.75.75 0 0 0-1.06 0l-1.724 1.725a4.438 4.438 0 0 1-4.041 1.096 6.002 6.002 0 0 1-4.49-1.993v-.585a.75.75 0 0 1 1.5 0v.585c0 1.107.87 2.051 1.992 2.201-.39-.46-.667-1.01-.734-1.602A4.437 4.437 0 0 1 11.666 2.544Z" />
                             <path d="M12.41 12.067a.75.75 0 0 1 .588 1.06l-.284.568c.52.278.994.615 1.416 1.01l.492-.492a.75.75 0 0 1 1.06 0l2.5 2.5a.75.75 0 0 1 0 1.06l-.492.492a4.438 4.438 0 0 1-1.01 1.416l-.568-.284a.75.75 0 0 1-1.06.588l-2.072.58a.75.75 0 0 1-.956-.356l-1.009-2.018a.75.75 0 0 1 .956-.356l2.072.58a4.438 4.438 0 0 1-1.096 4.041 6.003 6.003 0 0 1-1.993 4.49h.585a.75.75 0 0 1 0 1.5h-2.25a.75.75 0 0 1-.75-.75v-2.25a.75.75 0 0 1 1.5 0v.5l2.072-2.071a.75.75 0 0 1 1.06 0l1.725 1.724a4.437 4.437 0 0 1 1.348-3.52l.568-.284Z" />
                         </svg>
-                        <h3 class="text-xl font-bold text-white">Energia e Disposição</h3>
+                        <h3 class="text-xl font-bold text-gray-900">Energia e Disposição</h3>
                     </div>
-                    <p class="text-gray-400">Promove um aumento significativo nos seus níveis de energia, permitindo mais intensidade e foco nos treinos e nas atividades do dia a dia.</p>
+                    <p class="text-gray-600">Promove um aumento significativo nos seus níveis de energia, permitindo mais intensidade e foco nos treinos e nas atividades do dia a dia.</p>
                 </div>
                 <!-- Benefício 3 -->
-                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
                     <div class="flex items-center space-x-4 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path fill-rule="evenodd" d="M3.75 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Zm0 6.75a.75.75 0 0 1 .75-.75h15a.75.75 0 0 1 0 1.5h-15a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
                         </svg>
-                        <h3 class="text-xl font-bold text-white">Ganho de Massa Magra</h3>
+                        <h3 class="text-xl font-bold text-gray-900">Ganho de Massa Magra</h3>
                     </div>
-                    <p class="text-gray-400">Com a combinação de ingredientes naturais, auxilia no desenvolvimento muscular e na recuperação pós-treino, potencializando os seus resultados.</p>
+                    <p class="text-gray-600">Com a combinação de ingredientes naturais, auxilia no desenvolvimento muscular e na recuperação pós-treino, potencializando os seus resultados.</p>
                 </div>
                 <!-- Benefício 4 -->
-                <div class="p-6 bg-gray-900 rounded-lg shadow-xl hover:bg-gray-800 transition-colors">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-xl hover:bg-gray-200 transition-colors">
                     <div class="flex items-center space-x-4 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-red-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600">
                             <path d="M12 2.25a.75.75 0 0 1 .75.75v.231l4.703 2.858a.75.75 0 0 1-.703 1.262l-3.38-2.054a.75.75 0 0 0-.91-.13L5.432 6.945a.75.75 0 1 1-.703-1.262l4.703-2.858A.75.75 0 0 1 12 2.25ZM12 4.536l-3.793 2.302L4.5 5.097v3.023l3.793 2.302 3.707-2.25v-3.023Zm0 17.214a.75.75 0 0 1-.75-.75v-.231l-4.703-2.858a.75.75 0 0 1 .703-1.262l3.38 2.054a.75.75 0 0 0 .91.13L18.568 17.055a.75.75 0 1 1 .703 1.262l-4.703 2.858a.75.75 0 0 1-.75-.75ZM12 19.464l3.793-2.302L19.5 18.903v-3.023l-3.793-2.302-3.707 2.25v3.023Z" />
                             <path d="M11.25 12a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
                             <path d="M12 14.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008ZM12 9.75a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
                             <path d="M12 11.25a.75.75 0 0 1 .75-.75h.008a.75.75 0 0 1 .75.75v.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.008Z" />
                         </svg>
-                        <h3 class="text-xl font-bold text-white">Foco e Clareza Mental</h3>
+                        <h3 class="text-xl font-bold text-gray-900">Foco e Clareza Mental</h3>
                     </div>
-                    <p class="text-gray-400">Além dos benefícios físicos, melhora a clareza mental e a concentração, ajudando você a se sentir mais alerta e pronto para qualquer desafio.</p>
+                    <p class="text-gray-600">Além dos benefícios físicos, melhora a clareza mental e a concentração, ajudando você a se sentir mais alerta e pronto para qualquer desafio.</p>
                 </div>
             </div>
         </div>
@@ -218,7 +219,7 @@
     <section id="ofertas" class="bg-black py-16">
         <div class="container text-center">
             <h2 class="text-4xl font-extrabold text-white mb-4 uppercase">
-                <span class="text-gradient">OFERTAS ESPECIAIS</span>
+                <span class="text-red-gradient">OFERTAS ESPECIAIS</span>
             </h2>
             <div id="countdown-timer"></div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
@@ -257,32 +258,32 @@
     </section>
 
     <!-- Seção Revendedor -->
-    <section id="revendedor" class="bg-gray-950 py-16">
+    <section id="revendedor" class="bg-gray-100 py-16">
         <div class="container text-center max-w-2xl mx-auto">
-            <h2 class="text-4xl font-extrabold text-white uppercase mb-4">
-                <span class="text-gradient">Seja um Revendedor</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 uppercase mb-4">
+                <span class="text-green-gradient">Seja um Revendedor</span>
             </h2>
-            <p class="text-lg text-gray-300 mb-8">
+            <p class="text-lg text-gray-600 mb-8">
                 Junte-se a nós e ajude a levar saúde e bem-estar para mais pessoas! Preencha o formulário abaixo e entraremos em contato.
             </p>
-            <form id="revendedor-form" class="bg-gray-900 p-8 rounded-lg shadow-xl space-y-6">
+            <form id="revendedor-form" class="bg-gray-100 p-8 rounded-lg shadow-xl space-y-6">
                 <div>
-                    <label for="nome" class="block text-left text-sm font-medium text-gray-400">Nome</label>
-                    <input type="text" id="nome" name="nome" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                    <label for="nome" class="block text-left text-sm font-medium text-gray-600">Nome</label>
+                    <input type="text" id="nome" name="nome" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900">
                 </div>
                 <div>
-                    <label for="endereco" class="block text-left text-sm font-medium text-gray-400">Endereço</label>
-                    <input type="text" id="endereco" name="endereco" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                    <label for="endereco" class="block text-left text-sm font-medium text-gray-600">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900">
                 </div>
                 <div>
-                    <label for="empresa" class="block text-left text-sm font-medium text-gray-400">Nome da Empresa</label>
-                    <input type="text" id="empresa" name="empresa" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                    <label for="empresa" class="block text-left text-sm font-medium text-gray-600">Nome da Empresa</label>
+                    <input type="text" id="empresa" name="empresa" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900">
                 </div>
                 <div>
-                    <label for="telefone" class="block text-left text-sm font-medium text-gray-400">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" required class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm text-gray-200">
+                    <label for="telefone" class="block text-left text-sm font-medium text-gray-600">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900">
                 </div>
-                <button type="submit" class="w-full px-8 py-3 text-white font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 transition-colors rounded-full shadow-lg shadow-red-500/50">
+                <button type="submit" class="w-full px-8 py-3 text-white font-bold uppercase tracking-wider bg-green-600 hover:bg-green-700 transition-colors rounded-full shadow-lg shadow-green-500/50">
                     Enviar
                 </button>
             </form>
@@ -290,43 +291,43 @@
     </section>
 
     <!-- Seção de Depoimentos -->
-    <section class="bg-black py-16">
+    <section class="bg-white py-16">
         <div class="container text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-12 uppercase">
-                <span class="text-gradient">Depoimentos</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-12 uppercase">
+                <span class="text-green-gradient">Depoimentos</span>
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Depoimento 1 -->
-                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-300 italic mb-4">"Desde que comecei a usar, minha energia e disposição no dia a dia mudaram completamente. Recomendo muito!"</p>
-                    <p class="font-bold text-sm text-red-600 uppercase">João S.</p>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Desde que comecei a usar, minha energia e disposição no dia a dia mudaram completamente. Recomendo muito!"</p>
+                    <p class="font-bold text-sm text-green-600 uppercase">João S.</p>
                 </div>
                 <!-- Depoimento 2 -->
-                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-300 italic mb-4">"Os resultados são visíveis! Melhora no humor, na libido e na performance na academia. Estou muito satisfeito."</p>
-                    <p class="font-bold text-sm text-red-600 uppercase">Pedro A.</p>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Os resultados são visíveis! Melhora no humor, na libido e na performance na academia. Estou muito satisfeito."</p>
+                    <p class="font-bold text-sm text-green-600 uppercase">Pedro A.</p>
                 </div>
                 <!-- Depoimento 3 -->
-                <div class="bg-gray-950 p-6 rounded-lg shadow-lg">
-                    <p class="text-gray-300 italic mb-4">"Um produto natural que realmente funciona. Minha confiança e vitalidade voltaram. Não troco por nada!"</p>
-                    <p class="font-bold text-sm text-red-600 uppercase">Carlos P.</p>
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <p class="text-gray-600 italic mb-4">"Um produto natural que realmente funciona. Minha confiança e vitalidade voltaram. Não troco por nada!"</p>
+                    <p class="font-bold text-sm text-green-600 uppercase">Carlos P.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Seção de Dúvidas Frequentes -->
-    <section id="duvidas" class="bg-gray-950 py-16">
+    <section id="duvidas" class="bg-gray-100 py-16">
         <div class="container text-center">
-            <h2 class="text-4xl font-extrabold text-white uppercase">
-                <span class="text-gradient">Dúvidas Frequentes</span>
+            <h2 class="text-4xl font-extrabold text-gray-900 uppercase">
+                <span class="text-green-gradient">Dúvidas Frequentes</span>
             </h2>
-            <p class="mt-4 text-gray-400">Em breve, esta seção será preenchida com as perguntas e respostas mais comuns sobre nossos produtos.</p>
+            <p class="mt-4 text-gray-600">Em breve, esta seção será preenchida com as perguntas e respostas mais comuns sobre nossos produtos.</p>
         </div>
     </section>
 
     <!-- Rodapé -->
-    <footer class="bg-gray-950 text-center text-gray-400 py-8">
+    <footer class="bg-gray-100 text-center text-gray-700 py-8">
         <div class="container">
             <p>&copy; 2025 Marvit Naturais. Todos os direitos reservados.</p>
         </div>
