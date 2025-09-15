@@ -4,14 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvit - Produtos Naturais</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos CSS vão aqui */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+        
+        .header img {
+            max-height: 40px;
+        }
+        
+        .navigation a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        /* Seção de Destaque */
+        .hero-section {
+            background-image: url('https://i.imgur.com/your-hero-image.jpg'); /* Substitua pelo link da sua imagem de banner */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: left;
+            padding: 150px 50px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2em;
+            margin: 0 0 20px;
+        }
+        
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+        /* Seção de Produtos */
+        .products-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        
+        .products-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+        
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .product-card p {
+            margin: 5px 0;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: #888;
+        }
+        
+        .btn-secondary {
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        /* Rodapé */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
     <header class="header">
         <div class="logo">
-            <img src="logo-marvit.png" alt="Logo Marvit">
-        </div>
+            <img src="https://i.imgur.com/your-logo.png" alt="Logo Marvit"> </div>
         <nav class="navigation">
             <a href="#">Início</a>
             <a href="#">Produtos</a>
@@ -32,26 +154,22 @@
         <h2>NOSSOS PRODUTOS</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="honey.jpg" alt="Vath HZO A FHED">
-                <p>Vath HZO A FHED</p>
+                <img src="https://i.imgur.com/your-honey-image.jpg" alt="Vath HZO A FHED"> <p>Vath HZO A FHED</p>
                 <p class="price">$18.00</p>
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
             <div class="product-card">
-                <img src="oil.jpg" alt="Nerygria PAJEDA">
-                <p>Nerygria PAJEDA</p>
+                <img src="https://i.imgur.com/your-oil-image.jpg" alt="Nerygria PAJEDA"> <p>Nerygria PAJEDA</p>
                 <p class="price">$26.00</p>
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
             <div class="product-card">
-                <img src="tea-bag.jpg" alt="Denpilro Congo Exay">
-                <p>Denpilro Congo Exay</p>
+                <img src="https://i.imgur.com/your-tea-bag-image.jpg" alt="Denpilro Congo Exay"> <p>Denpilro Congo Exay</p>
                 <p class="price">$18.00</p>
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
             <div class="product-card">
-                <img src="tea-box.jpg" alt="Haylarã Na Tea">
-                <p>Haylarã Na Tea</p>
+                <img src="https://i.imgur.com/your-tea-box-image.jpg" alt="Haylarã Na Tea"> <p>Haylarã Na Tea</p>
                 <p class="price">$13.00</p>
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
@@ -61,8 +179,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="logo-marvit-footer.png" alt="Logo Marvit">
-            </div>
+                <img src="https://i.imgur.com/your-footer-logo.png" alt="Logo Marvit"> </div>
             <div class="contact-info">
                 <p>Email: contato@marvit.com</p>
                 <p>Telefone: (11) 1234-5678</p>
@@ -74,6 +191,17 @@
             </div>
         </div>
     </footer>
+    
+    <script>
+        // JavaScript vai aqui (exemplo simples de interação)
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Produto adicionado ao carrinho!');
+            });
+        });
+    </script>
 
 </body>
 </html>
