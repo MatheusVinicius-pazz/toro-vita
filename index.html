@@ -11,26 +11,26 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            background-color: #397950;
+            color: white;
         }
         
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 50px; /* Reduzi o padding superior e inferior */
+            padding: 10px 50px;
         }
         
         .header img {
-            height: 40px; /* Usei height para fixar a altura, ignorando o espaço em branco da imagem */
+            height: 100px;
             width: auto;
         }
         
         .navigation a {
             margin-left: 20px;
             text-decoration: none;
-            color: #333;
+            color: white;
             font-weight: bold;
         }
         
@@ -66,6 +66,8 @@
         .products-section {
             text-align: center;
             padding: 50px 20px;
+            background-color: #f7f7f7;
+            color: #333;
         }
         
         .products-section h2 {
@@ -117,16 +119,33 @@
         
         /* Rodapé */
         .footer {
-            background-color: #333;
+            background-color: #397950; /* A cor do fundo foi alterada para o verde da logo */
             color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .footer-content {
+            padding: 20px 50px; /* Adicionei padding horizontal para espaçamento */
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between; /* Alinha o logo à esquerda e o texto à direita */
             align-items: center;
+        }
+
+        .footer-logo {
+            flex-grow: 1; /* Permite que o logo ocupe o espaço necessário */
+        }
+
+        .footer-logo img {
+            height: 50px; /* Ajustei o tamanho da logo para o rodapé */
+            width: auto;
+        }
+
+        .footer-info {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Espaço entre as informações */
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px; /* Espaço entre os ícones */
         }
     </style>
 </head>
@@ -183,10 +202,10 @@
     </section>
 
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="https://i.imgur.com/your-footer-logo.png" alt="Logo Marvit">
-            </div>
+        <div class="footer-logo">
+            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
+        </div>
+        <div class="footer-info">
             <div class="contact-info">
                 <p>Email: contato@marvit.com</p>
                 <p>Telefone: (11) 1234-5678</p>
