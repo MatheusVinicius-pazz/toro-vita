@@ -40,7 +40,8 @@
             padding: 0 20px;
         }
         
-        .header img {
+        /* Estilo da logo para telas grandes */
+        .desktop-logo img {
             height: 40px;
             width: auto;
         }
@@ -328,9 +329,17 @@
             body {
                 padding-top: 60px;
             }
+            
+            /* Esconde a logo da área de trabalho no celular */
+            .desktop-logo {
+                display: none;
+            }
 
-            .header img {
-                height: 30px;
+            /* Estilos para a logo dentro do menu do celular */
+            .mobile-logo {
+                display: block;
+                height: 50px;
+                margin-bottom: 30px;
             }
 
             .navigation {
@@ -346,17 +355,15 @@
                 background-color: #ffffff;
                 color: #333;
                 box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-                padding: 80px 20px;
+                padding: 40px 20px; /* Ajusta o padding para a nova logo */
                 transition: right 0.3s ease-in-out;
                 z-index: 999;
                 margin-right: 0;
             }
 
             .navigation.show {
-                /* --- CORREÇÃO FINAL AQUI --- */
-                display: flex; 
+                display: flex;
                 right: 0;
-                /* --- FIM DA CORREÇÃO --- */
             }
             
             .navigation a {
@@ -433,10 +440,11 @@
 
     <header class="header">
         <div class="header-container">
-            <div class="logo">
+            <div class="desktop-logo">
                 <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
             </div>
             <nav class="navigation" id="navigation-menu">
+                <img class="mobile-logo" src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
                 <a href="#">Início</a>
                 <a href="#products-section">Produtos</a>
                 <a href="#history-section">Sobre Nós</a>
