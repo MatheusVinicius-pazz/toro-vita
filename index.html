@@ -315,11 +315,10 @@
         @media (max-width: 768px) {
             .header {
                 padding: 10px 20px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
             body {
-                padding-top: 50px;
+                padding-top: 60px; /* Ajusta o padding para a altura do novo cabeçalho */
             }
 
             .header img {
@@ -332,13 +331,14 @@
                 justify-content: center;
                 align-items: center;
                 position: absolute;
-                top: 50px; /* Alinhar abaixo do header */
+                top: 60px; /* Alinhar abaixo do header */
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
                 color: #333;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
                 padding: 10px 0;
+                z-index: 999;
             }
             
             .header {
@@ -550,7 +550,6 @@
             }
         });
 
-        // Adiciona um evento de clique para fechar o menu ao selecionar um link
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navigation.classList.remove('show');
