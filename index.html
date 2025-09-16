@@ -191,13 +191,16 @@
             .navigation {
                 display: none;
                 flex-direction: column;
-                position: absolute;
-                top: 50px;
-                right: 0;
+                justify-content: center; /* Centraliza verticalmente */
+                align-items: center; /* Centraliza horizontalmente */
+                position: fixed; /* O menu ocupa a tela toda */
+                top: 0;
+                left: 0;
                 width: 100%;
-                background-color: #ffffff;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                padding: 20px;
+                height: 100%;
+                background-color: rgba(57, 121, 80, 0.9); /* Fundo verde com transparência */
+                box-shadow: none;
+                padding: 0;
                 z-index: 1000;
             }
 
@@ -206,13 +209,14 @@
             }
             
             .navigation a {
-                color: #333;
-                margin: 10px 0;
+                color: white; /* Cor do texto no menu agora é branco */
+                margin: 20px 0;
+                font-size: 1.5em; /* Aumenta o tamanho da fonte para melhor leitura */
             }
             
             .hamburger-menu {
                 display: block;
-                color: #397950; /* A cor do ícone do hambúrguer agora é verde */
+                color: #397950;
             }
 
             .hero-content h1 {
