@@ -21,6 +21,7 @@
             align-items: center;
             padding: 20px 50px;
             background-color: #ffffff;
+            position: relative;
         }
         
         .header img {
@@ -28,22 +29,34 @@
             width: auto;
         }
         
+        .navigation {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
         .navigation a {
             margin-left: 20px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
-            transition: color 0.3s ease; /* Transição para o efeito de hover */
+            transition: color 0.3s ease;
         }
 
-        /* Adicionando o efeito de hover para os links do menu */
         .navigation a:hover {
-            color: #397950; /* Muda a cor do texto para o verde da logo */
+            color: #397950;
         }
         
+        /* Menu Hambúrguer (invisível em telas grandes) */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: #333;
+        }
+
         /* Seção de Destaque */
         .hero-section {
-            background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994798/Gemini_Generated_Image_5id88u5id88u5id8_kilapr.png');
+            background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -164,6 +177,72 @@
             text-decoration: none;
             margin-left: 10px;
         }
+
+        /* --- MEDIA QUERIES (Responsividade) --- */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+            }
+
+            .header img {
+                height: 30px;
+            }
+
+            .navigation {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                right: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                padding: 20px;
+                z-index: 1000;
+            }
+
+            .navigation.show {
+                display: flex;
+            }
+            
+            .navigation a {
+                color: #333;
+                margin: 10px 0;
+            }
+            
+            .hamburger-menu {
+                display: block;
+                color: #397950; /* A cor do ícone do hambúrguer agora é verde */
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .products-section {
+                padding: 30px 10px;
+            }
+
+            .product-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-card {
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -172,12 +251,13 @@
         <div class="logo">
             <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
         </div>
-        <nav class="navigation">
+        <nav class="navigation" id="navigation-menu">
             <a href="#">Início</a>
             <a href="#">Produtos</a>
             <a href="#">Sobre Nós</a>
             <a href="#">Contato</a>
         </nav>
+        <div class="hamburger-menu" id="hamburger-icon">&#9776;</div>
     </header>
 
     <section class="hero-section">
@@ -237,11 +317,18 @@
     
     <script>
         const productCards = document.querySelectorAll('.product-card');
-
         productCards.forEach(card => {
             card.addEventListener('click', () => {
                 alert('Produto adicionado ao carrinho!');
             });
+        });
+
+        // Lógica do menu hambúrguer
+        const hamburger = document.getElementById('hamburger-icon');
+        const navigation = document.getElementById('navigation-menu');
+
+        hamburger.addEventListener('click', () => {
+            navigation.classList.toggle('show');
         });
     </script>
 
