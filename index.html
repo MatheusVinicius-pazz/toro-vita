@@ -215,7 +215,7 @@
             z-index: 1;
         }
 
-        /* NOVO: Pseudo-elemento para a imagem de fundo com desfoque */
+        /* Pseudo-elemento para a imagem de fundo com desfoque */
         .products-section::before {
             content: '';
             position: absolute;
@@ -273,6 +273,11 @@
             margin-bottom: 10px;
             max-height: 150px;
             object-fit: contain;
+        }
+
+        /* Ajuste específico para a imagem do Torovita */
+        .product-grid .product-card:first-of-type img {
+            max-height: 200px; /* Aumenta a altura máxima para não ficar achatada */
         }
         
         .price {
@@ -363,20 +368,24 @@
             gap: 20px;
         }
 
+        /* NOVO: Estilos para os ícones sociais no rodapé */
         .social-links {
             display: flex;
             gap: 15px;
         }
-        
+
         .social-links a {
-            color: white;
-            font-size: 14px;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+        }
+        
+        .social-links img {
+            height: 30px; /* Define o tamanho do ícone */
+            width: auto;
+            transition: filter 0.3s ease; /* Adiciona transição para o efeito de brilho */
         }
 
-        .social-links a:hover {
-            opacity: 0.8;
+        .social-links a:hover img {
+            filter: brightness(1.3); /* Aumenta o brilho da imagem ao passar o mouse */
         }
 
         /* --- MEDIA QUERIES (Responsividade) --- */
@@ -624,9 +633,15 @@
                 <p>Telefone: (82) 98146-4993</p>
             </div>
             <div class="social-links">
-                <a href="https://www.instagram.com/marvit.naturais/reel/DNDyP7exoVU/" target="_blank">Instagram</a>
-                <a href="https://wa.me/5582981464993" target="_blank">WhatsApp</a>
-                <a href="mailto:contato2rodrigues@gmail.com">E-mail</a>
+                <a href="https://wa.me/5582981464993" target="_blank">
+                    <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758029767/6ec2dfa9-e563-44d1-bd93-b12fabc40302_oyvad9.jpg" alt="Ícone do WhatsApp">
+                </a>
+                <a href="https://www.instagram.com/marvit.naturais/reel/DNDyP7exoVU/" target="_blank">
+                    <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758029851/criativo-6594670e4b7e9MDIvMDEvMjAyNCAxNmg0Mg_vqvuke.jpg" alt="Ícone do Instagram">
+                </a>
+                <a href="mailto:contato2rodrigues@gmail.com">
+                    <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758029852/png-clipart-social-media-email-marketing-customer-social-media-angle-white_kpplsp.png" alt="Ícone do Email">
+                </a>
             </div>
         </div>
     </footer>
