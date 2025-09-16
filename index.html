@@ -64,16 +64,37 @@
             color: white;
             text-align: left;
             padding: 150px 50px;
+            position: relative; /* Necessário para o ::before */
+            z-index: 1; /* Garante que o conteúdo fique acima do overlay */
+        }
+        
+        /* Overlay para o banner */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Preto com 40% de opacidade */
+            z-index: -1; /* Garante que o overlay fique atrás do conteúdo */
+        }
+
+        .hero-content {
+            position: relative; /* Garante que o conteúdo fique acima do overlay */
+            z-index: 2;
         }
         
         .hero-content h1 {
             font-size: 3em;
             margin: 0 0 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Adiciona uma sombra para melhor destaque */
         }
         
         .hero-content p {
             font-size: 1.2em;
             margin: 0 0 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Adiciona uma sombra para melhor destaque */
         }
         
         .btn-primary {
@@ -332,106 +353,4 @@
     </section>
 
     <section class="history-section" id="history-section">
-        <div class="history-content">
-            <h2>Nossa História</h2>
-            <p>Criada com o propósito de promover saúde e bem-estar de forma natural e acessível, a Marvit surge como uma marca dedicada à qualidade de vida.</p>
-            <p>Nosso primeiro lançamento é o Torovita Testo, um potente estimulante masculino 100% natural, de linha premium, que ajuda a recuperar a vitalidade e aumentar a testosterona do homem, dando mais força, energia, potência e libido.</p>
-            <p>Em breve teremos outros produtos como:</p>
-            <ul>
-                <li>Suplementos femininos emagrecedores.</li>
-                <li>Ômega 3 de alta pureza e qualidade.</li>
-                <li>Fortificante feminino para cabelo, pele e unhas.</li>
-            </ul>
-            <p>E muito mais...</p>
-            <p class="brand-name">Marvit Produtos Naturais.</p>
-        </div>
-        <div>
-            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
-        </div>
-    </section>
-
-    <section class="products-section" id="products-section">
-        <h2>NOSSOS PRODUTOS</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://i.imgur.com/your-honey-image.jpg" alt="Vath HZO A FHED">
-                <p>Vath HZO A FHED</p>
-                <p class="price">$18.00</p>
-                <a href="#" class="btn-secondary">Adicionar</a>
-            </div>
-            <div class="product-card">
-                <img src="https://i.imgur.com/your-oil-image.jpg" alt="Nerygria PAJEDA">
-                <p>Nerygria PAJEDA</p>
-                <p class="price">$26.00</p>
-                <a href="#" class="btn-secondary">Adicionar</a>
-            </div>
-            <div class="product-card">
-                <img src="https://i.imgur.com/your-tea-bag-image.jpg" alt="Denpilro Congo Exay">
-                <p>Denpilro Congo Exay</p>
-                <p class="price">$18.00</p>
-                <a href="#" class="btn-secondary">Adicionar</a>
-            </div>
-            <div class="product-card">
-                <img src="https://i.imgur.com/your-tea-box-image.jpg" alt="Haylarã Na Tea">
-                <p>Haylarã Na Tea</p>
-                <p class="price">$13.00</p>
-                <a href="#" class="btn-secondary">Adicionar</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer" id="footer">
-        <div class="footer-logo">
-            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
-        </div>
-        <div class="footer-info">
-            <div class="contact-info">
-                <p>Email: contato@marvit.com</p>
-                <p>Telefone: (11) 1234-5678</p>
-            </div>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        const productCards = document.querySelectorAll('.product-card');
-        productCards.forEach(card => {
-            card.addEventListener('click', () => {
-                alert('Produto adicionado ao carrinho!');
-            });
-        });
-
-        const hamburger = document.getElementById('hamburger-icon');
-        const navigation = document.getElementById('navigation-menu');
-        const navLinks = document.querySelectorAll('#navigation-menu a');
-
-        hamburger.addEventListener('click', () => {
-            navigation.classList.toggle('show');
-            if (navigation.classList.contains('show')) {
-                hamburger.innerHTML = '&times;';
-                hamburger.style.color = 'white';
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                hamburger.innerHTML = '&#9776;';
-                hamburger.style.color = '#397950';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Adiciona um evento de clique para fechar o menu ao selecionar um link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navigation.classList.remove('show');
-                hamburger.innerHTML = '&#9776;';
-                hamburger.style.color = '#397950';
-                document.body.style.overflow = 'auto';
-            });
-        });
-    </script>
-
-</body>
-</html>
+        <div class="history
