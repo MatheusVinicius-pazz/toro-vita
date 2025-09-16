@@ -353,7 +353,10 @@
             }
 
             .navigation.show {
+                /* --- CORREÇÃO FINAL AQUI --- */
+                display: flex; 
                 right: 0;
+                /* --- FIM DA CORREÇÃO --- */
             }
             
             .navigation a {
@@ -368,11 +371,9 @@
                 cursor: pointer;
                 font-size: 30px;
                 z-index: 1001;
-                /* --- CORREÇÃO AQUI --- */
                 position: fixed;
                 right: 15px;
                 top: 15px;
-                /* --- FIM DA CORREÇÃO --- */
             }
 
             /* Banner para telas pequenas: ajusta a imagem e o padding */
