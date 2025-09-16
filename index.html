@@ -219,11 +219,6 @@
                 display: block;
                 color: #397950;
             }
-            
-            .hamburger-menu.active {
-                content: '\2715'; /* Ícone de 'X' */
-                color: #397950;
-            }
 
             .hero-content h1 {
                 font-size: 2em;
@@ -339,7 +334,11 @@
 
         hamburger.addEventListener('click', () => {
             navigation.classList.toggle('show');
-            hamburger.classList.toggle('active');
+            if (navigation.classList.contains('show')) {
+                hamburger.innerHTML = '&times;'; // Muda para "X"
+            } else {
+                hamburger.innerHTML = '&#9776;'; // Volta para o ícone de hambúrguer
+            }
         });
     </script>
 
