@@ -213,6 +213,45 @@
         .btn-secondary:hover {
             background-color: #bbb;
         }
+
+        /* --- Estilos da Nova Seção de Valores --- */
+        .values-section {
+            text-align: center;
+            padding: 80px 50px;
+            background-color: white;
+            color: #333;
+        }
+
+        .values-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .value-card {
+            max-width: 250px;
+            text-align: center;
+        }
+
+        .value-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            font-size: 1.2em;
+            margin-top: 0;
+            color: #397950;
+        }
+
+        .value-card p {
+            font-size: 1em;
+            line-height: 1.5;
+        }
         
         /* Rodapé */
         .footer {
@@ -249,11 +288,11 @@
         @media (max-width: 768px) {
             .header {
                 padding: 10px 20px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra para destacar em telas pequenas */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
 
             body {
-                padding-top: 50px; /* Ajusta o padding para a altura do cabeçalho em celular */
+                padding-top: 50px;
             }
 
             .header img {
@@ -379,6 +418,31 @@
         </div>
         <div>
             <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="values-grid">
+            <div class="value-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_kcrdis.jpg" alt="Produtos de alta qualidade">
+                <h3>Qualidade e Inovação</h3>
+                <p>Desenvolvemos produtos de alta qualidade, 100% naturais, que combinam a sabedoria da natureza com a ciência para oferecer o melhor em saúde e bem-estar.</p>
+            </div>
+            <div class="value-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_1_blwv1p.jpg" alt="Parceria de sucesso">
+                <h3>Parceria de Sucesso</h3>
+                <p>Acreditamos no crescimento conjunto. Oferecemos oportunidades de revenda vantajosas para que nossos parceiros possam prosperar junto com a gente.</p>
+            </div>
+            <div class="value-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_2_okvspn.jpg" alt="Conexão e confiança">
+                <h3>Conexão e Confiança</h3>
+                <p>Construímos relacionamentos sólidos com nossos fornecedores e clientes, baseados em transparência e respeito mútuo. Sua confiança é o nosso maior valor.</p>
+            </div>
+            <div class="value-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994724/WhatsApp_Image_2025-09-12_at_08.14.34_dlljjv.jpg" alt="Compromisso com a entrega">
+                <h3>Compromisso com a Entrega</h3>
+                <p>Garantimos que cada produto chegue até você com agilidade e segurança, embalado com todo o cuidado para manter sua integridade e qualidade.</p>
+            </div>
         </div>
     </section>
 
