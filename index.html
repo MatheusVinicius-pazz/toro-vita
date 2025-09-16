@@ -472,6 +472,11 @@
                 text-align: center;
                 padding: 40px 20px;
             }
+            
+            /* NOVO: Força a imagem a aparecer antes do texto no celular */
+            .history-image-wrapper {
+                order: -1; 
+            }
 
             .history-section img {
                 max-width: 80%;
@@ -547,7 +552,7 @@
                 <li>Fortificante feminino para cabelo, pele e unhas.</li>
             </ul>
         </div>
-        <div>
+        <div class="history-image-wrapper">
             <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
         </div>
     </section>
@@ -629,8 +634,7 @@
         </div>
         <div class="footer-info">
             <div class="contact-info">
-                <p>CONTATOS:</p>
-                
+                <p>Contatos:</p>
             </div>
             <div class="social-links">
                 <a href="https://wa.me/5582981464993" target="_blank">
