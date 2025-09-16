@@ -261,10 +261,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap; /* Permite que o conteúdo se ajuste em telas pequenas */
         }
 
         .footer-logo {
             flex-grow: 1;
+            margin-bottom: 10px;
         }
 
         .footer-logo img {
@@ -275,13 +277,24 @@
         .footer-info {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 20px;
         }
 
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
         .social-links a {
             color: white;
+            font-size: 14px;
             text-decoration: none;
-            margin-left: 10px;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
         }
 
         /* --- MEDIA QUERIES (Responsividade) --- */
@@ -375,6 +388,10 @@
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
+            }
+
+            .footer-info {
+                justify-content: center;
             }
         }
     </style>
@@ -482,13 +499,13 @@
         </div>
         <div class="footer-info">
             <div class="contact-info">
-                <p>Email: contato@marvit.com</p>
-                <p>Telefone: (11) 1234-5678</p>
+                <p>Email: contato2rodrigues@gmail.com</p>
+                <p>Telefone: (82) 98146-4993</p>
             </div>
             <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+                <a href="https://www.instagram.com/marvit.naturais/reel/DNDyP7exoVU/" target="_blank">Instagram</a>
+                <a href="https://wa.me/5582981464993" target="_blank">WhatsApp</a>
+                <a href="mailto:contato2rodrigues@gmail.com">E-mail</a>
             </div>
         </div>
     </footer>
