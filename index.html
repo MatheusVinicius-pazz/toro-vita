@@ -263,8 +263,8 @@
             .hero-section {
                 background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
                 background-size: cover;
-                background-position: center;
-                padding: 100px 20px;
+                background-position: center 30%;
+                padding: 100px 20px; 
             }
 
             .hero-content h1 {
@@ -407,6 +407,7 @@
 
         const hamburger = document.getElementById('hamburger-icon');
         const navigation = document.getElementById('navigation-menu');
+        const navLinks = document.querySelectorAll('#navigation-menu a');
 
         hamburger.addEventListener('click', () => {
             navigation.classList.toggle('show');
@@ -419,6 +420,16 @@
                 hamburger.style.color = '#397950';
                 document.body.style.overflow = 'auto';
             }
+        });
+
+        // Adiciona um evento de clique para fechar o menu ao selecionar um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navigation.classList.remove('show');
+                hamburger.innerHTML = '&#9776;';
+                hamburger.style.color = '#397950';
+                document.body.style.overflow = 'auto';
+            });
         });
     </script>
 
