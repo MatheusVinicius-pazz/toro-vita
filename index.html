@@ -172,32 +172,29 @@
             margin-top: 20px;
         }
         
-        /* --- ESTILOS CORRIGIDOS DO CARROSSEL --- */
+        /* --- ESTILOS DO CARROSSEL DE VOLTA AO MODO DESLIZAMENTO --- */
         .carousel-section {
-            position: relative;
             padding: 0;
             margin: 0;
             overflow: hidden;
             background-color: #f7f7f7;
             text-align: center;
-            height: 400px; /* Define uma altura fixa para o carrossel */
+        }
+
+        .carousel-container {
+            display: flex; /* Alinha as imagens horizontalmente */
+            transition: transform 0.5s ease-in-out; /* Adiciona a transição suave */
+            max-height: 400px; /* Reduz a altura para não ser "exagerado" */
+            overflow: hidden; /* Garante que a imagem não saia do contêiner */
+            align-items: center; 
         }
 
         .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out; /* Transição para o efeito de fade */
+            min-width: 100%; /* Força cada slide a ocupar 100% da largura do contêiner */
+            flex-shrink: 0; /* Impede que o slide encolha */
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .carousel-slide.active {
-            opacity: 1; /* Mostra o slide ativo */
         }
 
         .carousel-slide img {
@@ -525,8 +522,8 @@
     </section>
 
     <section class="carousel-section">
-        <div class="carousel-container">
-            <div class="carousel-slide active">
+        <div class="carousel-container" id="carousel">
+            <div class="carousel-slide">
                 <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994727/WhatsApp_Image_2025-09-12_at_08.47.36_sl6jc3.jpg" alt="Imagem 1 do Carrossel">
             </div>
             <div class="carousel-slide">
@@ -640,27 +637,19 @@
             });
         });
 
-        // --- NOVO CÓDIGO DO CARROSSEL ---
+        // --- CÓDIGO DO CARROSSEL DE VOLTA AO MODO DESLIZAMENTO ---
+        const carousel = document.getElementById('carousel');
         const slides = document.querySelectorAll('.carousel-slide');
         let currentSlide = 0;
         const intervalTime = 5000; // 5 segundos
 
-        function showSlide() {
-            // Remove a classe 'active' de todos os slides
-            slides.forEach(slide => slide.classList.remove('active'));
-            
-            // Adiciona a classe 'active' ao slide atual
-            slides[currentSlide].classList.add('active');
-        }
-
         function nextSlide() {
             currentSlide = (currentSlide + 1) % slides.length;
-            showSlide();
+            const offset = -currentSlide * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
         }
-
-        // Inicia o carrossel
-        showSlide();
-        setInterval(nextSlide, intervalTime);
+        
+        setInterval(nextSlide, intervalTime); 
     </script>
 
 </body>
