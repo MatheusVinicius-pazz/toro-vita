@@ -20,9 +20,7 @@
         }
         
         .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            overflow: hidden; /* Limpa o float */
             padding: 20px 50px;
             background-color: #ffffff;
             position: fixed;
@@ -33,22 +31,27 @@
             z-index: 1000;
         }
         
-        .header img {
+        .logo {
+            float: left;
+        }
+
+        .logo img {
             height: 40px;
             width: auto;
         }
 
         /* --- CORREÇÃO AQUI --- */
         .navigation {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 20px;
-            flex-grow: 1; 
-            transition: all 0.5s ease-in-out;
+            float: right;
+            list-style-type: none; /* Remove os marcadores de lista */
+            margin: 0;
+            padding: 0;
+            display: block;
         }
         
         .navigation a {
+            display: inline-block;
+            margin-left: 20px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
