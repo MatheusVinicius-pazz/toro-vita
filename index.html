@@ -259,10 +259,18 @@
                 color: #397950;
             }
 
-            /* NOVO BANNER PARA TELAS PEQUENAS */
+            /* NOVO BANNER PARA TELAS PEQUENAS E AJUSTE DE ZOOM */
             .hero-section {
                 background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
+                background-size: 100% auto; /* Ajusta a largura para 100% e a altura automaticamente */
+                background-repeat: no-repeat; /* Garante que a imagem não se repita */
+                background-position: center top; /* Centraliza a imagem no topo */
             }
+            /* Removendo o padding excessivo no hero-section para celular */
+            .hero-section {
+                padding: 80px 20px; /* Reduz o padding para a imagem aparecer melhor */
+            }
+
 
             .hero-content h1 {
                 font-size: 2em;
