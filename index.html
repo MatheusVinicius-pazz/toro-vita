@@ -52,12 +52,13 @@
             cursor: pointer;
             font-size: 30px;
             color: #333;
-            transition: transform 0.3s ease; /* Para a rotação do ícone */
+            transition: transform 0.3s ease;
+            z-index: 1001; /* Garante que o hambúrguer fique acima do menu */
         }
         
-        /* Seção de Destaque */
+        /* Seção de Destaque - IMAGEM ORIGINAL PARA TELAS GRANDES */
         .hero-section {
-            background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
+            background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994798/Gemini_Generated_Image_5id88u5id88u5id8_kilapr.png');
             background-size: cover;
             background-position: center;
             color: white;
@@ -218,6 +219,12 @@
             .hamburger-menu {
                 display: block;
                 color: #397950;
+                /* Não precisa de .hamburger-menu.active para o "X" aqui */
+            }
+
+            /* NOVO BANNER PARA TELAS PEQUENAS */
+            .hero-section {
+                background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
             }
 
             .hero-content h1 {
@@ -328,7 +335,6 @@
             });
         });
 
-        // Lógica para abrir e fechar o menu hambúrguer
         const hamburger = document.getElementById('hamburger-icon');
         const navigation = document.getElementById('navigation-menu');
 
@@ -336,8 +342,11 @@
             navigation.classList.toggle('show');
             if (navigation.classList.contains('show')) {
                 hamburger.innerHTML = '&times;'; // Muda para "X"
+                // Opcional: Impedir o scroll da página quando o menu estiver aberto
+                document.body.style.overflow = 'hidden'; 
             } else {
                 hamburger.innerHTML = '&#9776;'; // Volta para o ícone de hambúrguer
+                document.body.style.overflow = 'auto';
             }
         });
     </script>
