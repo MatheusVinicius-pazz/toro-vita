@@ -52,8 +52,9 @@
             cursor: pointer;
             font-size: 30px;
             color: #333;
+            transition: transform 0.3s ease; /* Para a rotação do ícone */
         }
-
+        
         /* Seção de Destaque */
         .hero-section {
             background-image: url('https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_4_m9fbkm.jpg');
@@ -191,14 +192,14 @@
             .navigation {
                 display: none;
                 flex-direction: column;
-                justify-content: center; /* Centraliza verticalmente */
-                align-items: center; /* Centraliza horizontalmente */
-                position: fixed; /* O menu ocupa a tela toda */
+                justify-content: center;
+                align-items: center;
+                position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(57, 121, 80, 0.9); /* Fundo verde com transparência */
+                background-color: rgba(57, 121, 80, 0.9);
                 box-shadow: none;
                 padding: 0;
                 z-index: 1000;
@@ -209,13 +210,18 @@
             }
             
             .navigation a {
-                color: white; /* Cor do texto no menu agora é branco */
+                color: white;
                 margin: 20px 0;
-                font-size: 1.5em; /* Aumenta o tamanho da fonte para melhor leitura */
+                font-size: 1.5em;
             }
             
             .hamburger-menu {
                 display: block;
+                color: #397950;
+            }
+            
+            .hamburger-menu.active {
+                content: '\2715'; /* Ícone de 'X' */
                 color: #397950;
             }
 
@@ -327,12 +333,13 @@
             });
         });
 
-        // Lógica do menu hambúrguer
+        // Lógica para abrir e fechar o menu hambúrguer
         const hamburger = document.getElementById('hamburger-icon');
         const navigation = document.getElementById('navigation-menu');
 
         hamburger.addEventListener('click', () => {
             navigation.classList.toggle('show');
+            hamburger.classList.toggle('active');
         });
     </script>
 
