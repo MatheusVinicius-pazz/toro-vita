@@ -318,4 +318,115 @@
 
     <header class="header">
         <div class="logo">
-            <img src="
+            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
+        </div>
+        <nav class="navigation" id="navigation-menu">
+            <a href="#">Início</a>
+            <a href="#">Produtos</a>
+            <a href="#">Sobre Nós</a>
+            <a href="#">Contato</a>
+        </nav>
+        <div class="hamburger-menu" id="hamburger-icon">&#9776;</div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>NATUREZA À SUA MESA</h1>
+            <p>Produtos naturais para uma vida saudável</p>
+            <a href="#" class="btn-primary">COMPRAR AGORA</a>
+        </div>
+    </section>
+
+    <section class="history-section">
+        <div class="history-content">
+            <h2>Nossa História</h2>
+            <p>Criada com o propósito de promover saúde e bem-estar de forma natural e acessível, a Marvit surge como uma marca dedicada à qualidade de vida.</p>
+            <p>Nosso primeiro lançamento é o Torovita Testo, um potente estimulante masculino 100% natural, de linha premium, que ajuda a recuperar a vitalidade e aumentar a testosterona do homem, dando mais força, energia, potência e libido.</p>
+            <p>Em breve teremos outros produtos como:</p>
+            <ul>
+                <li>Suplementos femininos emagrecedores.</li>
+                <li>Ômega 3 de alta pureza e qualidade.</li>
+                <li>Fortificante feminino para cabelo, pele e unhas.</li>
+            </ul>
+            <p>E muito mais...</p>
+            <p class="brand-name">Marvit Produtos Naturais.</p>
+        </div>
+        <div>
+            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2>NOSSOS PRODUTOS</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://i.imgur.com/your-honey-image.jpg" alt="Vath HZO A FHED">
+                <p>Vath HZO A FHED</p>
+                <p class="price">$18.00</p>
+                <a href="#" class="btn-secondary">Adicionar</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i.imgur.com/your-oil-image.jpg" alt="Nerygria PAJEDA">
+                <p>Nerygria PAJEDA</p>
+                <p class="price">$26.00</p>
+                <a href="#" class="btn-secondary">Adicionar</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i.imgur.com/your-tea-bag-image.jpg" alt="Denpilro Congo Exay">
+                <p>Denpilro Congo Exay</p>
+                <p class="price">$18.00</p>
+                <a href="#" class="btn-secondary">Adicionar</a>
+            </div>
+            <div class="product-card">
+                <img src="https://i.imgur.com/your-tea-box-image.jpg" alt="Haylarã Na Tea">
+                <p>Haylarã Na Tea</p>
+                <p class="price">$13.00</p>
+                <a href="#" class="btn-secondary">Adicionar</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757958761/1757893136704__1_-removebg-preview_qr56dz.png" alt="Logo Marvit">
+        </div>
+        <div class="footer-info">
+            <div class="contact-info">
+                <p>Email: contato@marvit.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+            </div>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                alert('Produto adicionado ao carrinho!');
+            });
+        });
+
+        const hamburger = document.getElementById('hamburger-icon');
+        const navigation = document.getElementById('navigation-menu');
+
+        hamburger.addEventListener('click', () => {
+            navigation.classList.toggle('show');
+            if (navigation.classList.contains('show')) {
+                hamburger.innerHTML = '&times;';
+                hamburger.style.color = 'white';
+                document.body.style.overflow = 'hidden'; 
+            } else {
+                hamburger.innerHTML = '&#9776;';
+                hamburger.style.color = '#397950';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+</body>
+</html>
