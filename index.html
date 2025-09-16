@@ -45,6 +45,11 @@
             height: 40px;
             width: auto;
         }
+        
+        /* NOVO: Esconde a logo do celular em telas grandes por padrão */
+        .mobile-logo {
+            display: none;
+        }
 
         .navigation {
             display: flex;
@@ -353,7 +358,7 @@
                 padding-top: 60px;
             }
             
-            /* Esconde a logo da área de trabalho no celular */
+            /* CORREÇÃO AQUI: Esconde a logo da área de trabalho no celular */
             .desktop-logo {
                 display: none;
             }
@@ -497,7 +502,6 @@
                 <li>Fortificante feminino para cabelo, pele e unhas.</li>
             </ul>
             <p>E muito mais...</p>
-            <p class="brand-name">Marvit Produtos Naturais.</p>
         </div>
         <div>
             <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
@@ -617,7 +621,7 @@
             });
         });
 
-        // NOVO JS: Para o Carrossel de Fotos
+        // JS: Para o Carrossel de Fotos
         const carousel = document.getElementById('carousel');
         const slides = document.querySelectorAll('.carousel-slide');
         let currentSlide = 0;
