@@ -177,21 +177,30 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
+            background-color: #f7f7f7; /* Cor de fundo para preencher espaços se a imagem for menor */
         }
 
         .carousel-container {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            height: 400px; /* Define uma altura fixa para o carrossel */
+            align-items: center; /* Centraliza as imagens verticalmente */
+            justify-content: center; /* Centraliza as imagens horizontalmente */
         }
 
         .carousel-slide {
             min-width: 100%;
             flex-shrink: 0;
+            display: flex; /* Para centralizar a imagem dentro do slide */
+            align-items: center;
+            justify-content: center;
+            height: 100%; /* Ocupa a altura total do container */
         }
 
         .carousel-slide img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover; /* Ajusta a imagem para cobrir o espaço, cortando se necessário */
             display: block;
         }
         
@@ -461,6 +470,11 @@
             .footer-info {
                 justify-content: center;
             }
+
+            /* NOVO: Ajuste do carrossel para telas menores */
+            .carousel-container {
+                height: 250px; /* Reduz ainda mais a altura em dispositivos móveis */
+            }
         }
     </style>
 </head>
@@ -537,7 +551,7 @@
                 <p>Acreditamos no crescimento conjunto. Oferecemos oportunidades de revenda vantajosas para que nossos parceiros possam prosperar junto com a gente.</p>
             </div>
             <div class="value-card">
-                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_2_okvspn.jpg" alt="Conexão e confiança">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_2_okvspn.jpg" alt="Conexão e Confiança">
                 <h3>Conexão e Confiança</h3>
                 <p>Construímos relacionamentos sólidos com nossos fornecedores e clientes, baseados em transparência e respeito mútuo. Sua confiança é o nosso maior valor.</p>
             </div>
