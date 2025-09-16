@@ -13,7 +13,7 @@
             padding: 0;
             background-color: #397950;
             color: white;
-            padding-top: 80px; /* Adicionado para compensar a altura do header fixo */
+            padding-top: 80px;
         }
         
         .header {
@@ -22,12 +22,12 @@
             align-items: center;
             padding: 20px 50px;
             background-color: #ffffff;
-            position: fixed; /* O menu agora é fixo no topo */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000; /* Garante que o header fique acima de outros elementos */
+            z-index: 1000;
         }
         
         .header img {
@@ -179,13 +179,14 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             width: 250px;
-            padding: 20px;
+            padding: 15px; /* Ajuste para deixar o card menor */
             text-align: center;
         }
 
         .product-card h3 {
             font-size: 1.2em;
             color: #397950;
+            margin-top: 0; /* Ajuste para deixar o card menor */
         }
 
         .product-card p {
@@ -322,12 +323,12 @@
             }
 
             .navigation {
-                display: none; /* Inicia oculto */
+                display: none;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                position: absolute; /* Posição relativa ao pai com position: relative */
-                top: 100%; /* Inicia logo abaixo do header */
+                position: absolute;
+                top: 100%;
                 left: 0;
                 width: 100%;
                 background-color: #ffffff;
@@ -348,7 +349,7 @@
             }
             
             .navigation a {
-                color: #333; /* Cor do link no menu mobile */
+                color: #333;
                 margin: 10px 0;
                 font-size: 1.2em;
             }
@@ -454,31 +455,6 @@
         
     </section>
 
-    <section class="values-section">
-        <div class="values-grid">
-            <div class="value-card">
-                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_kcrdis.jpg" alt="Produtos de alta qualidade">
-                <h3>Qualidade e Inovação</h3>
-                <p>Desenvolvemos produtos de alta qualidade, 100% naturais, que combinam a sabedoria da natureza com a ciência para oferecer o melhor em saúde e bem-estar.</p>
-            </div>
-            <div class="value-card">
-                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_1_blwv1p.jpg" alt="Parceria de sucesso">
-                <h3>Parceria de Sucesso</h3>
-                <p>Acreditamos no crescimento conjunto. Oferecemos oportunidades de revenda vantajosas para que nossos parceiros possam prosperar junto com a gente.</p>
-            </div>
-            <div class="value-card">
-                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994722/WhatsApp_Image_2025-09-12_at_08.14.33_2_okvspn.jpg" alt="Conexão e confiança">
-                <h3>Conexão e Confiança</h3>
-                <p>Construímos relacionamentos sólidos com nossos fornecedores e clientes, baseados em transparência e respeito mútuo. Sua confiança é o nosso maior valor.</p>
-            </div>
-            <div class="value-card">
-                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994724/WhatsApp_Image_2025-09-12_at_08.14.34_dlljjv.jpg" alt="Compromisso com a entrega">
-                <h3>Compromisso com a Entrega</h3>
-                <p>Garantimos que cada produto chegue até você com agilidade e segurança, embalado com todo o cuidado para manter sua integridade e qualidade.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="products-section" id="products-section">
         <h2>NOSSOS PRODUTOS</h2>
         <div class="product-grid">
@@ -490,14 +466,17 @@
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
             <div class="product-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_6_h8f31s.jpg" alt="Produto em breve">
                 <h3>Em breve!</h3>
                 <p>Suplementos femininos emagrecedores.</p>
             </div>
             <div class="product-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_6_h8f31s.jpg" alt="Produto em breve">
                 <h3>Em breve!</h3>
                 <p>Ômega 3 de alta pureza e qualidade.</p>
             </div>
             <div class="product-card">
+                <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994726/WhatsApp_Image_2025-09-12_at_08.48.31_6_h8f31s.jpg" alt="Produto em breve">
                 <h3>Em breve!</h3>
                 <p>Fortificante feminino para cabelo, pele e unhas.</p>
             </div>
