@@ -19,8 +19,11 @@
             padding-top: 80px;
         }
         
+        /* --- CORREÇÃO AQUI --- */
         .header {
-            overflow: hidden; /* Limpa o float */
+            display: flex; /* Garante que os itens são flexíveis */
+            justify-content: space-between; /* Alinha o logo à esquerda e o menu à direita */
+            align-items: center; /* Centraliza os itens verticalmente */
             padding: 20px 50px;
             background-color: #ffffff;
             position: fixed;
@@ -31,27 +34,21 @@
             z-index: 1000;
         }
         
-        .logo {
-            float: left;
-        }
-
-        .logo img {
+        .header img {
             height: 40px;
             width: auto;
         }
 
-        /* --- CORREÇÃO AQUI --- */
         .navigation {
-            float: right;
-            list-style-type: none; /* Remove os marcadores de lista */
-            margin: 0;
-            padding: 0;
-            display: block;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            flex-grow: 1; 
+            transition: all 0.5s ease-in-out;
         }
         
         .navigation a {
-            display: inline-block;
-            margin-left: 20px;
             text-decoration: none;
             color: #333;
             font-weight: bold;
