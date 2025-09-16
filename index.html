@@ -322,19 +322,25 @@
             }
 
             .navigation {
-                display: none;
+                display: none; /* Inicia oculto */
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                position: fixed;
-                top: 0;
+                position: absolute; /* Posição relativa ao pai com position: relative */
+                top: 100%; /* Inicia logo abaixo do header */
                 left: 0;
                 width: 100%;
-                height: 100%;
-                background-color: rgba(57, 121, 80, 0.9);
-                box-shadow: none;
-                padding: 0;
+                background-color: #ffffff;
+                color: #333;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 10px 0;
+            }
+            
+            .header {
+                position: fixed;
+                width: 100%;
                 z-index: 1000;
+                background-color: #fff;
             }
 
             .navigation.show {
@@ -342,9 +348,9 @@
             }
             
             .navigation a {
-                color: white;
-                margin: 20px 0;
-                font-size: 1.5em;
+                color: #333; /* Cor do link no menu mobile */
+                margin: 10px 0;
+                font-size: 1.2em;
             }
             
             .hamburger-menu {
@@ -445,6 +451,7 @@
         <div>
             <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1758000324/WhatsApp_Image_2025-09-12_at_08.14.34__1_-removebg-preview_xh52xz.png" alt="Produtos Marvit">
         </div>
+        
     </section>
 
     <section class="values-section">
@@ -479,7 +486,7 @@
                 <img src="https://res.cloudinary.com/dnrrgpoxt/image/upload/v1757994725/WhatsApp_Image_2025-09-12_at_08.48.31_3_uv8bep.jpg" alt="Torovita Testo">
                 <h3>Torovita Testo</h3>
                 <p>Estimulante masculino 100% natural, que ajuda a recuperar a vitalidade e aumentar a testosterona.</p>
-                <p class="price">R$ 89,90</p>
+                <p class="price">R$ 159,90</p>
                 <a href="#" class="btn-secondary">Adicionar</a>
             </div>
             <div class="product-card">
