@@ -53,7 +53,7 @@
             font-size: 30px;
             color: #333;
             transition: transform 0.3s ease;
-            z-index: 1001; /* Garante que o hambúrguer fique acima do menu */
+            z-index: 1001;
         }
         
         /* Seção de Destaque - IMAGEM ORIGINAL PARA TELAS GRANDES */
@@ -218,8 +218,7 @@
             
             .hamburger-menu {
                 display: block;
-                color: #397950;
-                /* Não precisa de .hamburger-menu.active para o "X" aqui */
+                color: #397950; /* A cor do ícone do hambúrguer original é verde */
             }
 
             /* NOVO BANNER PARA TELAS PEQUENAS */
@@ -341,11 +340,12 @@
         hamburger.addEventListener('click', () => {
             navigation.classList.toggle('show');
             if (navigation.classList.contains('show')) {
-                hamburger.innerHTML = '&times;'; // Muda para "X"
-                // Opcional: Impedir o scroll da página quando o menu estiver aberto
+                hamburger.innerHTML = '&times;';
+                hamburger.style.color = 'white'; // Muda a cor do "X" para branco
                 document.body.style.overflow = 'hidden'; 
             } else {
-                hamburger.innerHTML = '&#9776;'; // Volta para o ícone de hambúrguer
+                hamburger.innerHTML = '&#9776;';
+                hamburger.style.color = '#397950'; // Volta para a cor verde do hambúrguer
                 document.body.style.overflow = 'auto';
             }
         });
